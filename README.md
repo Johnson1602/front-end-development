@@ -1,0 +1,1 @@
+This repository keeps track of my learning process of front-end development.
