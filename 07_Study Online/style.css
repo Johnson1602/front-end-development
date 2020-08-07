@@ -3,6 +3,11 @@
 	padding: 0;
 }
 
+body {
+	background-color: #f3f5f7;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
 .w {
 	width: 1200px;
 	margin: 0 auto;
@@ -95,4 +100,104 @@ li {
 
 .user img {
 	margin-right: 5px;
+}
+
+/* Banner */
+.banner {
+	height: 420px;
+	background-color: #1c036c;
+}
+
+.banner .w {
+	height: 420px;
+	background: url(images/banner.png) no-repeat top center;
+}
+
+/* 左侧导航栏 */
+.subnav {
+	float: left;
+	width: 190px;
+	height: 396px;
+	padding: 12px 0;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.subnav ul li a {
+	display: block;
+	height: 44px;
+	padding: 0 20px;
+	line-height: 44px;
+	font-size: 14px;
+	color: #ffffff;
+}
+
+.subnav ul li a:hover {
+	color: #00a4ff;
+}
+
+.subnav ul li a span {
+	display: block;
+	float: right;
+	width: 5px;
+	height: 9px;
+	margin-top: 17.5px;
+	background: url(images/arrow.png);
+}
+
+.subnav ul li a span:hover {
+	background: url(images/arrow-hover.png);
+}
+
+/* 右侧我的课程 */
+.course {
+	float: right;
+	width: 228px;
+	height: 300px;
+	margin-top: 50px;
+	background-color: #ffffff;
+}
+
+.course h2 {
+	height: 48px;
+	line-height: 48px;
+	background-color: #9bceea;
+	font-size: 18px;
+	color: #ffffff;
+	text-align: center;
+}
+
+.course .detail ul li {
+	padding: 0 17px;
+}
+
+.course .detail ul li a {
+	display: block;
+	padding: 13px 3px;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.course .detail ul li a h3 {
+	font-size: 14px;
+	color: #4e4e4e;
+}
+
+.course .detail ul li a h3 span {
+	font-size: 16px;
+}
+
+.course .detail ul li a p {
+	font-size: 12px;
+	color: #a5a5a5;
+}
+
+.more {
+	display: block;
+	width: 198px;
+	height: 38px;
+	margin: 5px auto 0;
+	border: 1px solid #00a4ff;
+	line-height: 38px;
+	text-align: center;
+	font-size: 16px;
+	color: #00a4ff;
 }
