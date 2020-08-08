@@ -144,12 +144,8 @@ li {
 	color: #ffffff;
 }
 
-.subnav ul li a:hover {
-	color: #00a4ff;
-}
-
 .subnav ul li a span {
-	display: block;
+	/* display: block; */
 	float: right;
 	width: 5px;
 	height: 9px;
@@ -157,7 +153,12 @@ li {
 	background: url(images/arrow.png);
 }
 
-.subnav ul li a span:hover {
+.subnav ul li a:hover {
+	color: #00a4ff;
+}
+
+/* 这里很神奇，鼠标经过 a 标签时，里面的 span 标签也跟着变颜色 */
+.subnav ul li a:hover span {
 	background: url(images/arrow-hover.png);
 }
 
