@@ -8,6 +8,19 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 }
 
+.clearfix::before, .clearfix::after {
+	content: "";
+	display: table;
+}
+
+.clearfix::after {
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
 .w {
 	width: 1200px;
 	margin: 0 auto;
@@ -200,4 +213,106 @@ li {
 	text-align: center;
 	font-size: 16px;
 	color: #00a4ff;
+}
+
+/* 精品推荐 */
+.goods {
+	height: 60px;
+	margin-top: 8px;
+	background-color: #ffffff;
+	box-shadow: 0 3px 15px rgba(0, 0, 0, .1);
+	line-height: 60px;
+}
+
+.goods h3 {
+	float: left;
+	height: 60px;
+	padding: 0 34px;
+	font-size: 16px;
+	color: #00a4ff;
+}
+
+.goods ul {
+	float: left;
+}
+
+.goods ul li {
+	float: left;
+}
+
+.goods ul li a {
+	padding: 0 34px;
+	border-left: 1px solid #bfbfbf;
+	font-size: 16px;
+	color: #050505;
+}
+
+.goods .modify {
+	float: right;
+	margin-right: 26px;
+	font-size: 14px;
+	color: #00a4ff;
+}
+
+/* 精品推荐 */
+.selected {
+	margin-top: 17px;
+}
+
+.selected .selected-head {
+	height: 60px;
+	line-height: 60px;
+}
+
+.selected .selected-head h3 {
+	float: left;
+	font-size: 20px;
+	font-weight: 200;
+	color: #494949;
+}
+
+.selected .selected-head a {
+	float: right;
+	margin-right: 34px;
+	font-size: 12px;
+	color: #a5a5a5;
+}
+
+.selected-body {
+	width: 1215px;
+}
+
+.selected-course {
+	float: left;
+	margin: 0 15px 15px 0;
+	background-color: #ffffff;
+}
+
+.selected-course a {
+	display: block;
+	width: 228px;
+	height: 270px;
+}
+
+.selected-course .thumbnail {
+	width: 100%;
+	margin-bottom: 18px;
+}
+
+.selected-course .title {
+	width: 187px;
+	margin: 0 auto 13px;
+	font-size: 14px;
+	color: #050505;
+}
+
+.selected-course p {
+	width: 187px;
+	margin: 0 auto 13px;
+	font-size: 12px;
+	color: #999999;
+}
+
+.selected-course p .level {
+	color: #ff7c2d;
 }
