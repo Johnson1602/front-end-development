@@ -283,6 +283,7 @@ li {
 }
 
 .selected-course {
+	position: relative;
 	float: left;
 	margin: 0 15px 15px 0;
 	background-color: #ffffff;
@@ -292,6 +293,12 @@ li {
 	display: block;
 	width: 228px;
 	height: 270px;
+}
+
+.selected-course .lable {
+	position: absolute;
+	top: 4px;
+	right: -4px;
 }
 
 .selected-course .thumbnail {
