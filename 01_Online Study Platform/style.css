@@ -1,0 +1,395 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #f3f5f7;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.clearfix::before, .clearfix::after {
+	content: "";
+	display: table;
+}
+
+.clearfix::after {
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1;
+}
+
+.w {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+/* 顶部导航栏 */
+.header {
+	height: 42px;
+	/* 这里由于样式层叠，所以需要再给写上 auto */
+	margin: 30px auto;
+	/* background-color: pink; */
+}
+
+/* 左侧 Logo */
+.logo {
+	float: left;
+	width: 195px;
+	height: 42px;
+	/* background-color: purple; */
+}
+
+/* 导航栏 */
+.nav {
+	float: left;
+	margin-left: 55px;
+}
+
+.nav ul li {
+	float: left;
+	margin: 0 15px;
+}
+
+.nav ul li a {
+	display: block;
+	height: 42px;
+	line-height: 42px;
+	padding: 0 10px;
+	font-size: 18px;
+	color: #050505;
+}
+
+.nav ul li a:hover {
+	border-bottom: 2px solid #00a4ff;
+}
+
+/* 搜索框 */
+.search {
+	float: left;
+	width: 411px;
+	height: 40px;
+	margin: 1px 0 1px 82px;
+	/* background-color: purple; */
+}
+
+.search input {
+	float: left;
+	width: 341px;
+	height: 38px;
+	padding-left: 19px;
+	border: 1px solid #00a4ff;
+	border-right: 0;
+	font-size: 14px;
+	color: #bfbfbf;
+}
+
+.search button {
+	float: left;
+	width: 50px;
+	height: 40px;
+	border: 0;
+	background: url(images/fa-search.png);
+}
+
+/* 用户信息 */
+.user {
+	float: right;
+	height: 42px;
+	margin-right: 5px;
+	line-height: 42px;
+	font-size: 14px;
+	color: #666666;
+}
+
+.user .avatar {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	margin-top: -2px;
+	background: url(images/avatar.jpeg) no-repeat center;
+	background-size: 100%;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+
+/* Banner */
+.banner {
+	height: 420px;
+	background-color: #1c036c;
+}
+
+.banner .w {
+	height: 420px;
+	background: url(images/banner.png) no-repeat top center;
+}
+
+/* 左侧导航栏 */
+.subnav {
+	float: left;
+	width: 190px;
+	height: 396px;
+	padding: 12px 0;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.subnav ul li a {
+	display: block;
+	height: 44px;
+	padding: 0 20px;
+	line-height: 44px;
+	font-size: 14px;
+	color: #ffffff;
+}
+
+.subnav ul li a span {
+	/* display: block; */
+	float: right;
+	width: 5px;
+	height: 9px;
+	margin-top: 17.5px;
+	background: url(images/arrow.png);
+}
+
+.subnav ul li a:hover {
+	color: #00a4ff;
+}
+
+/* 这里很神奇，鼠标经过 a 标签时，里面的 span 标签也跟着变颜色 */
+.subnav ul li a:hover span {
+	background: url(images/arrow-hover.png);
+}
+
+/* 右侧我的课程 */
+.course {
+	float: right;
+	width: 228px;
+	height: 300px;
+	margin-top: 50px;
+	background-color: #ffffff;
+}
+
+.course h2 {
+	height: 48px;
+	line-height: 48px;
+	background-color: #9bceea;
+	font-size: 18px;
+	color: #ffffff;
+	text-align: center;
+}
+
+.course .detail ul li {
+	padding: 0 17px;
+}
+
+.course .detail ul li a {
+	display: block;
+	padding: 13px 3px;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.course .detail ul li a h3 {
+	font-size: 14px;
+	color: #4e4e4e;
+}
+
+.course .detail ul li a h3 span {
+	font-size: 16px;
+}
+
+.course .detail ul li a p {
+	font-size: 12px;
+	color: #a5a5a5;
+}
+
+.more {
+	display: block;
+	width: 198px;
+	height: 38px;
+	margin: 5px auto 0;
+	border: 1px solid #00a4ff;
+	line-height: 38px;
+	text-align: center;
+	font-size: 16px;
+	color: #00a4ff;
+}
+
+/* 精品推荐 */
+.goods {
+	height: 60px;
+	margin-top: 8px;
+	background-color: #ffffff;
+	box-shadow: 0 3px 15px rgba(0, 0, 0, .1);
+	line-height: 60px;
+}
+
+.goods h3 {
+	float: left;
+	height: 60px;
+	padding: 0 34px;
+	font-size: 16px;
+	color: #00a4ff;
+}
+
+.goods ul {
+	float: left;
+}
+
+.goods ul li {
+	float: left;
+}
+
+.goods ul li a {
+	padding: 0 34px;
+	border-left: 1px solid #bfbfbf;
+	font-size: 16px;
+	color: #050505;
+}
+
+.goods .modify {
+	float: right;
+	margin-right: 26px;
+	font-size: 14px;
+	color: #00a4ff;
+}
+
+/* 精品推荐 */
+.selected {
+	margin-top: 17px;
+}
+
+.selected .selected-head {
+	height: 60px;
+	line-height: 60px;
+}
+
+.selected .selected-head h3 {
+	float: left;
+	font-size: 20px;
+	font-weight: 200;
+	color: #494949;
+}
+
+.selected .selected-head a {
+	float: right;
+	margin-right: 34px;
+	font-size: 12px;
+	color: #a5a5a5;
+}
+
+.selected-body {
+	width: 1215px;
+}
+
+.selected-course {
+	position: relative;
+	float: left;
+	margin: 0 15px 15px 0;
+	background-color: #ffffff;
+}
+
+.selected-course a {
+	display: block;
+	width: 228px;
+	height: 270px;
+}
+
+.selected-course .lable {
+	position: absolute;
+	top: 4px;
+	right: -4px;
+}
+
+.selected-course .thumbnail {
+	width: 100%;
+	margin-bottom: 18px;
+}
+
+.selected-course .title {
+	width: 187px;
+	margin: 0 auto 13px;
+	font-size: 14px;
+	color: #050505;
+}
+
+.selected-course p {
+	width: 187px;
+	margin: 0 auto 13px;
+	font-size: 12px;
+	color: #999999;
+}
+
+.selected-course p .level {
+	color: #ff7c2d;
+}
+
+.footer {
+	height: 300px;
+	background-color: #fff;
+}
+
+.footer .w {
+	padding-top: 33px;
+	/* background-color: pink; */
+}
+
+.copyright {
+	float: left;
+	margin-left: 20px;
+}
+
+.copyright img {
+	margin-bottom: 23px;
+}
+
+.copyright p {
+	margin-bottom: 17px;
+	font-size: 12px;
+	color: #666666;
+}
+
+.copyright a {
+	display: block;
+	width: 118px;
+	height: 34px;
+	border: 1px solid #00a4ff;
+	line-height: 34px;
+	text-align: center;
+	font-size: 16px;
+	color: #00a4ff;
+}
+
+.link {
+	float: right;
+	margin-right: 20px;
+}
+
+.link dl {
+	float: left;
+	margin-left: 145px;
+}
+
+.link dt {
+	margin-bottom: 16px;
+	font-size: 16px;
+	color: #333333;
+}
+
+.link dd {
+	margin-bottom: 9px;
+}
+
+.link dd a {
+	font-size: 12px;
+	color: #333333;
+}
