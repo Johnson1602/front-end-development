@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tudou</title>
+	<style>
+		div {
+			position: relative;
+			width: 444px;
+			height: 320px;
+			margin: 100px auto;
+		}
+
+		img {
+			width: 100%;
+			height: 100%;
+		}
+
+		div::after {
+			content: "";
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: url(../08_Position/images/arr.png) no-repeat center rgba(0, 0, 0, .3);
+		}
+
+		div:hover::after {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="../08_Position/images/tudou.jpg" alt="tudou">
+	</div>
+</body>
+</html>
