@@ -1,3 +1,15 @@
+@font-face {
+	font-family: 'icomoon';
+	src:  url('fonts/icomoon.eot?bunkrg');
+	src:  url('fonts/icomoon.eot?bunkrg#iefix') format('embedded-opentype'),
+	  url('fonts/icomoon.ttf?bunkrg') format('truetype'),
+	  url('fonts/icomoon.woff?bunkrg') format('woff'),
+	  url('fonts/icomoon.svg?bunkrg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -145,6 +157,7 @@ li {
 
 .subnav ul li a {
 	display: block;
+	position: relative;
 	height: 44px;
 	padding: 0 20px;
 	line-height: 44px;
@@ -152,23 +165,37 @@ li {
 	color: #ffffff;
 }
 
-.subnav ul li a span {
-	/* display: block; */
-	float: right;
-	width: 5px;
-	height: 9px;
-	margin-top: 17.5px;
-	background: url(images/arrow.png);
+/* 使用伪元素+字体图标制作右侧的箭头 */
+.subnav ul li a::after {
+	position: absolute;
+	right: 20px;
+	content: "\e902";
+	font-family: 'icomoon';
 }
 
 .subnav ul li a:hover {
 	color: #00a4ff;
 }
 
-/* 这里很神奇，鼠标经过 a 标签时，里面的 span 标签也跟着变颜色 */
+/*
+.subnav ul li a span {
+	display: block;
+	float: right;
+	position: absolute;
+	right: 20px;
+	top: 22px;
+	width: 5px;
+	height: 9px;
+	margin-top: 17.5px;
+	margin-top: -4.5px;
+	vertical-align: middle;
+	background: url(images/arrow.png);
+}
+
+这里很神奇，鼠标经过 a 标签时，里面的 span 标签也跟着变颜色
 .subnav ul li a:hover span {
 	background: url(images/arrow-hover.png);
-}
+} */
 
 /* 右侧我的课程 */
 .course {
