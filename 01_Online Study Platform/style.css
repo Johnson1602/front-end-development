@@ -315,7 +315,7 @@ li {
 }
 
 .selected-body {
-	width: 1215px;
+	width: 1200px;
 }
 
 .selected-course {
@@ -323,6 +323,18 @@ li {
 	float: left;
 	margin: 0 15px 15px 0;
 	background-color: #ffffff;
+	transition: all .2s;
+}
+
+.selected-body .selected-course:nth-child(5n) {
+	margin-right: 0;
+}
+
+/* 给精品推荐课程添加动画以及阴影 */
+.selected-course:hover {
+	box-shadow: 0 15px 15px rgba(0, 0, 0, .1);
+	margin-top: -3px;
+	margin-bottom: 18px;
 }
 
 .selected-course a {
@@ -331,17 +343,21 @@ li {
 	height: 270px;
 }
 
+
+/* 课程右上角小角标 */
 .selected-course .lable {
 	position: absolute;
 	top: 4px;
 	right: -4px;
 }
 
+/* 课程图 */
 .selected-course .thumbnail {
 	width: 100%;
 	margin-bottom: 18px;
 }
 
+/* 课程名称 */
 .selected-course .title {
 	width: 187px;
 	margin: 0 auto 13px;
@@ -360,6 +376,7 @@ li {
 	color: #ff7c2d;
 }
 
+/* Footer */
 .footer {
 	height: 300px;
 	background-color: #fff;
