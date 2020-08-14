@@ -163,3 +163,96 @@ input[type="search"]::-webkit-search-decoration {
 	color: #ffffff;
 	line-height: 14px;
 }
+
+/* 导航栏部分 */
+.nav {
+	height: 47px;
+	border-bottom: 2px solid #b1191a;
+}
+
+/* 左侧下拉菜单 */
+.nav .w .dropdown {
+	float: left;
+	width: 209px;
+	height: 45px;
+	background-color: #b1191a;
+}
+
+/* 全部商品 */
+.dropdown .dt {
+	width: 209px;
+	height: 45px;
+	margin-bottom: 2px;
+	text-align: center;
+	line-height: 45px;
+	color: #ffffff;
+	font-size: 16px;
+}
+
+/* 商品分类下拉菜单 */
+.dropdown .dd ul {
+	background-color: #c81623;
+}
+
+.dropdown .dd ul li {
+	position: relative;
+	height: 31px;
+	margin-left: 1px;
+	padding-left: 11px;
+	/* background-color: pink; */
+	color: #ffffff;
+	line-height: 31px;
+}
+
+/* 因为有了绝对定位，after 伪元素就变成了一个行内块元素 */
+/* 此时 after 就会继承父元素 li 的高 31px */
+/* 这时 position top 就不需要再往下顶了 */
+.dropdown .dd ul li::after {
+	position: absolute;
+	/* top: 10px; */
+	right: 10px;
+	font-family: 'icomoon';
+	content: '\e902';
+	color: #ffffff;
+}
+
+.dropdown .dd ul li:hover {
+	background-color: #f7f7f7;
+	color: #c81623;
+}
+
+.dropdown .dd ul li:hover::after,
+.dropdown .dd ul li:hover a {
+	color: #c81623;
+}
+
+.dropdown .dd ul li a {
+	color: #ffffff;
+}
+
+/* 右侧导航栏内容 */
+.nav .w .navitems {
+	float: left;
+	/* background-color: pink; */
+	margin-left: 17px;
+	line-height: 45px;
+}
+
+.nav .w .navitems ul li {
+	float: left;
+}
+
+.nav .w .navitems ul li a {
+	display: block;
+	height: 45px;
+	padding: 0 24px;
+	font-size: 16px;
+	color: #333333;
+}
+
+.nav .w .navitems ul li a:hover {
+	background-color: #c81623;
+	color: #ffffff;
+}
+
+
