@@ -1,7 +1,59 @@
+/* 引入字体图标 */
+@font-face {
+	font-family: 'icomoon';
+	src:  url('../fonts/icomoon.eot?bunkrg');
+	src:  url('../fonts/icomoon.eot?bunkrg#iefix') format('embedded-opentype'),
+	  url('../fonts/icomoon.ttf?bunkrg') format('truetype'),
+	  url('../fonts/icomoon.woff?bunkrg') format('woff'),
+	  url('../fonts/icomoon.svg?bunkrg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+
 /* 设置版心宽度 */
 .w {
 	width: 1200px;
 	margin: 0 auto;
 }
 
+.float-left {
+	float: left;
+}
 
+.float-right {
+	float: right;
+}
+
+.font-red {
+	color: #c81623;
+}
+
+/* 顶部快捷导航栏 */
+/* 最外层的通栏大盒子 */
+.shortcut {
+	height: 31px;
+	background-color: #f1f1f1;
+	line-height: 31px;
+	color: #666666;
+}
+
+/* shortcut 栏中所有 li 元素左浮动 */
+.shortcut ul li {
+	float: left;
+}
+
+/* 右侧导航栏的分隔线 */
+.shortcut .float-right ul li:nth-child(even) {
+	width: 1px;
+	height: 12px;
+	margin: 9px 14px 0;
+	background-color: #666666;
+}
+
+/* 右侧导航栏下拉箭头 */
+.shortcut .float-right .arrow-down::after {
+	margin-left: 10px;
+	content: "\e900";
+	font-family: 'icomoon';
+}
