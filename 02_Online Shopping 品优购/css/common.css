@@ -1,11 +1,11 @@
 /* 引入字体图标 */
 @font-face {
 	font-family: 'icomoon';
-	src:  url('../fonts/icomoon.eot?bunkrg');
-	src:  url('../fonts/icomoon.eot?bunkrg#iefix') format('embedded-opentype'),
-	  url('../fonts/icomoon.ttf?bunkrg') format('truetype'),
-	  url('../fonts/icomoon.woff?bunkrg') format('woff'),
-	  url('../fonts/icomoon.svg?bunkrg#icomoon') format('svg');
+	src:  url('../fonts/icomoon.eot?cif9la');
+	src:  url('../fonts/icomoon.eot?cif9la#iefix') format('embedded-opentype'),
+	  url('../fonts/icomoon.ttf?cif9la') format('truetype'),
+	  url('../fonts/icomoon.woff?cif9la') format('woff'),
+	  url('../fonts/icomoon.svg?cif9la#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 	font-display: block;
@@ -111,4 +111,55 @@ input[type="search"]::-webkit-search-decoration {
 	background-color: #b1191a;
 	font-size: 16px;
 	color: #ffffff;
+}
+
+/* 中间热搜词 */
+.header .hotwords {
+	position: absolute;
+	top: 69px;
+	left: 347px;
+}
+
+.header .hotwords ul li {
+	float: left;
+	padding: 0 12px;
+
+}
+
+/* 右侧购物车 */
+.header .cart {
+	position: absolute;
+	top: 25px;
+	right: 63px;
+	width: 140px;
+	height: 36px;
+	background-color: #f7f7f7;
+	border: 1px solid #dfdfdf;
+	line-height: 34px;
+	text-align: center;
+}
+
+.header .cart a::before {
+	font-family: 'icomoon';
+	content: '\e93a';
+	color: #d95252;
+	margin-right: 7px;
+}
+
+.header .cart a::after {
+	content: '\e902';
+	font-family: 'icomoon';
+	margin-left: 10px;
+}
+
+.header .cart .badge {
+	position: absolute;
+	top: -5px;
+	left: 105px;
+	height: 14px;
+	padding: 0 5px;
+	border-radius: 7px 7px 7px 0;
+	background-color: #e60012;
+	color: #ffffff;
+	line-height: 14px;
 }
