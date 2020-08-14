@@ -190,7 +190,8 @@ input[type="search"]::-webkit-search-decoration {
 }
 
 /* 商品分类下拉菜单 */
-.dropdown .dd ul {
+.dropdown .dd {
+	display: none;
 	background-color: #c81623;
 }
 
@@ -255,4 +256,131 @@ input[type="search"]::-webkit-search-decoration {
 	color: #ffffff;
 }
 
+/* Footer */
+.footer {
+	height: 417px;
+	background-color: #f5f5f5;
+}
 
+.footer .w {
+	height: 417px;
+	/* background-color: pink; */
+}
+
+/* 顶部服务介绍 */
+.footer .mod-service {
+	height: 109px;
+	padding: 30px 0;
+	/* background-color: skyblue; */
+}
+
+.footer .mod-service ul li {
+	float: left;
+	width: 240px;
+	height: 49px;
+	padding-left: 37px;
+	/* background-color: pink; */
+}
+
+.footer .mod-service .service-icon {
+	float: left;
+	width: 49px;
+	height: 49px;
+	margin-right: 7px;
+	/* background-color: purple; */
+}
+
+.footer .mod-service .service-text {
+	margin-top: 4px;
+}
+
+.footer .mod-service .service-text h4 {
+	font-size: 14px;
+	color: #333333;
+}
+
+.footer .mod-service ul li h5 {
+	background: url(../images/icons.png) no-repeat;
+}
+
+.footer .mod-service ul li:nth-child(1) h5 {
+	background-position: -253px -3px;
+}
+
+.footer .mod-service ul li:nth-child(2) h5 {
+	background-position: -255px -54px;
+}
+
+.footer .mod-service ul li:nth-child(3) h5 {
+	background-position: -257px -106px;
+}
+
+.footer .mod-service ul li:nth-child(4) h5 {
+	background-position: -258px -157px;
+}
+
+.footer .mod-service ul li:nth-child(5) h5 {
+	background-position: -258px -209px;
+}
+
+/* 中间帮助 */
+.help {
+	height: 189px;
+	padding-top: 16px;
+	border-top: 1px solid #ededed;
+	border-bottom: 1px solid #ededed;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	/* background-color: pink; */
+}
+
+.help dl {
+	float: left;
+	width: 199px;
+	padding-left: 49px;
+}
+
+.help dl dt {
+	padding-bottom: 10px;
+	font-size: 16px;
+	color: #333333;
+}
+
+.help dl dd {
+	line-height: 20px;
+}
+
+.help dl:last-child {
+	width: 120px;
+	padding: 0;
+	text-align: center;
+}
+
+.help dl:last-child .qr-code {
+	width: 95px;
+	height: 95px;
+	margin: 0 auto 5px;
+	background: url(../images/QR.png) no-repeat;
+}
+
+/* 底部版权信息 */
+.copyright .links{
+	width: fit-content;
+	margin: 17px auto 10px;
+	
+}
+
+.copyright .links ul li {
+	float: left;
+}
+
+.copyright .links ul li:nth-child(even) {
+	width: 1px;
+	height: 12px;
+	margin: 4px 16px 0;
+	background-color: #999999;
+}
+
+.copyright p {
+	text-align: center;
+}
