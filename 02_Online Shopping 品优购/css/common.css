@@ -57,3 +57,58 @@
 	content: "\e900";
 	font-family: 'icomoon';
 }
+
+/* Header 部分 */
+.header {
+	position: relative;
+	height: 105px;
+}
+
+/* 左侧 Logo */
+.header .logo {
+	position: absolute;
+	top: 24px;
+	left: 3px;
+}
+
+.header .logo a {
+	display: block;
+	width: 171px;
+	height: 61px;
+	background: url(../images/logo.png);
+	font-size: 0;
+}
+
+/* 中间搜索框 */
+.header .search {
+	position: absolute;
+	top: 25px;
+	left: 347px;
+	width: 538px;
+	height: 36px;
+	border: 2px solid #b1191a;
+}
+
+.header .search input {
+	width: 454px;
+	height: 32px;
+	padding-left: 10px;
+	font-size: 14px;
+}
+
+/* 这里单拿出来 search 这个 input 类型，因为 Safari 会给他添加奇怪的属性，必须要去掉 */
+input[type="search"] {
+	-webkit-appearance: textfield;
+}
+
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+.header .search button {
+	width: 80px;
+	height: 32px;
+	background-color: #b1191a;
+	font-size: 16px;
+	color: #ffffff;
+}
