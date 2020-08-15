@@ -237,4 +237,100 @@
 	height: 163px;
 }
 
+/* for you 猜你喜欢 */
+.for-you {
+	height: 272px;
+	margin-top: 20px;
+	/* background-color: pink; */
+}
 
+.for-you .head {
+	height: 39px;
+	line-height: 39px;
+	/* background-color: skyblue; */
+}
+
+.for-you .head h4 {
+	float: left;
+	font-size: 18px;
+	color: #333333;
+}
+
+.for-you .head .change {
+	float: right;
+}
+
+.for-you .head .change::after {
+	display: block;
+	float: right;
+	width: 14px;
+	height: 14px;
+	margin: 12px 0 0 8px;
+	background: url(../images/icons.png) no-repeat -421px -111px;
+	content: '';
+	vertical-align: middle;
+}
+
+.for-you .body {
+	height: 233px;
+	border: 1px solid #ededed;
+	/* background-color: skyblue; */
+}
+
+.for-you .body ul li {
+	float: left;
+}
+
+.for-you .body ul li a {
+	position: relative;
+	display: block;
+	width: 200px;
+	height: 233px;
+	/* background-color: pink; */
+}
+
+.for-you .body ul li:last-child a {
+	width: 198px;
+}
+
+.for-you .body ul li:nth-child(-n+5) a::after {
+	position: absolute;
+	bottom: 9px;
+	right: 0;
+	width: 1px;
+	height: 62px;
+	background-color: #ededed;
+	content: '';
+}
+
+.thumbnail {
+	width: 150px;
+	height: 150px;
+	margin: 10px auto 0;
+}
+
+.thumbnail img {
+	width: 100%;
+	height: 100%;
+}
+
+.brand,
+.description,
+.for-you .body .price {
+	margin: auto;
+	width: 120px;
+	font-size: 12px;
+}
+
+.description {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.for-you .body .price {
+	margin: auto;
+	width: 120px;
+	font-size: 18px;
+	color: #df3033;
+}
