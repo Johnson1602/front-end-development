@@ -285,7 +285,9 @@
 	position: relative;
 	display: block;
 	width: 200px;
-	height: 233px;
+	height: 231px;
+	/* 这里加 overflow 是为了解决和 thumbnail 外边距合并的问题 */
+	overflow: hidden;
 	/* background-color: pink; */
 }
 
