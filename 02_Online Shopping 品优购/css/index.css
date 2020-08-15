@@ -244,18 +244,21 @@
 	/* background-color: pink; */
 }
 
+/* 顶部标题栏 */
 .for-you .head {
 	height: 39px;
 	line-height: 39px;
 	/* background-color: skyblue; */
 }
 
-.for-you .head h4 {
+.for-you .head h3 {
 	float: left;
 	font-size: 18px;
+	font-weight: 400;
 	color: #333333;
 }
 
+/* 标题栏右侧换一批 */
 .for-you .head .change {
 	float: right;
 }
@@ -268,9 +271,9 @@
 	margin: 12px 0 0 8px;
 	background: url(../images/icons.png) no-repeat -421px -111px;
 	content: '';
-	vertical-align: middle;
 }
 
+/* 为你推荐的商品栏 */
 .for-you .body {
 	height: 233px;
 	border: 1px solid #ededed;
@@ -288,6 +291,8 @@
 	height: 231px;
 	/* 这里加 overflow 是为了解决和 thumbnail 外边距合并的问题 */
 	overflow: hidden;
+	/* 也可以通过对外面盒子加 padding 解决 */
+	/* padding-top: 10px; */
 	/* background-color: pink; */
 }
 
@@ -309,6 +314,7 @@
 	width: 150px;
 	height: 150px;
 	margin: 10px auto 0;
+	/* margin: auto; */
 }
 
 .thumbnail img {
@@ -335,4 +341,114 @@
 	width: 120px;
 	font-size: 18px;
 	color: #df3033;
+}
+
+/* 楼层 */
+/* 一楼 家用电器 */
+.floor .w {
+	height: 477px;
+	margin-top: 26px;
+	/* background-color: pink; */
+}
+
+.box-head {
+	height: 32px;
+	border-bottom: 2px solid #c81623;
+}
+
+.box-head h3 {
+	float: left;
+	font-size: 18px;
+	font-weight: 400;
+	color: #c81623;
+}
+
+.box-head .tab-list {
+	float: right;
+	line-height: 30px;
+}
+
+.box-head .tab-list ul li {
+	float: left;
+}
+
+.box-head .tab-list ul li a {
+	margin: 0 14px;
+}
+
+.box-head .tab-list ul li:last-child a {
+	margin-right: 0;
+}
+
+.box-body {
+	height: 360px;
+	/* background-color: pink; */
+}
+
+.tab-list-item>div {
+	float: left;
+	height: 360px;
+}
+
+.col-210 {
+	width: 210px;
+	background-color: #f9f9f9;
+}
+
+.col-330 {
+	position: relative;
+	width: 330px;
+	background-color: #aed6d8;
+}
+
+.col-220 {
+	width: 220px;
+	/* background-color: skyblue; */
+}
+
+.col-210 ul {
+	padding-left: 13px;
+}
+
+.col-210 ul li {
+	float: left;
+	width: 86px;
+	height: 33px;
+	margin-right: 12px;
+	border-bottom: 1px solid #ededed;
+	line-height: 32px;
+	text-align: center;
+}
+
+.col-220 a {
+	display: block;
+	border-right: 1px solid #ededed;
+	border-bottom: 1px solid #ededed;
+}
+
+.col-330 ul {
+	position: absolute;
+	bottom: 16px;
+	left: 165px;
+	margin-left: -22px;
+	width: 45px;
+	height: 10px;
+	/* background-color: #fff; */
+}
+
+.col-330 ul li {
+	float: left;
+	width: 10px;
+	height: 10px;
+	margin-right: 7px;
+	border-radius: 50%;
+	background-color: #3e3e3e;
+}
+
+.col-330 ul li:last-child {
+	margin: 0;
+}
+
+.col-330 ul .selected {
+	background-color: #fff;
 }
