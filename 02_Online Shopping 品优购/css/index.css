@@ -382,6 +382,7 @@
 
 .box-body {
 	height: 360px;
+	margin-bottom: 20px;
 	/* background-color: pink; */
 }
 
@@ -451,4 +452,26 @@
 
 .col-330 ul .selected {
 	background-color: #fff;
+}
+
+.box-footer {
+	height: 65px;
+	background-color: #f7f7f7;
+}
+
+.box-footer ul li {
+	float: left;
+	margin-top: 13px;
+}
+
+.box-footer ul li a {
+	display: block;
+	width: 120px;
+	height: 39px;
+	border-right: 1px dotted #cccccc;
+	text-align: center;
+}
+
+.box-footer ul li:last-child a {
+	border: 0;
 }
