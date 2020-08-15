@@ -191,7 +191,7 @@ input[type="search"]::-webkit-search-decoration {
 
 /* 商品分类下拉菜单 */
 .dropdown .dd {
-	display: none;
+	/* display: none; */
 	background-color: #c81623;
 }
 

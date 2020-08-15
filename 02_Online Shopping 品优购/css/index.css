@@ -1,0 +1,186 @@
+/* 首页 main 模块 */
+.main {
+	width: 980px;
+	height: 455px;
+	margin: 10px 0 0 219px;
+	/* background-color: pink; */
+}
+
+/* 中间轮播图模块 */
+.focus {
+	position: relative;
+	float: left;
+	width: 721px;
+	height: 455px;
+}
+
+.focus ul li img {
+	width: 100%;
+	height: 100%;
+}
+
+/* 轮播图翻页箭头 */
+.focus .prev,
+.focus .next {
+	position: absolute;
+	top: 227px;
+	margin-top: -15px;
+	width: 30px;
+	height: 30px;
+	background: rgba(0, 0, 0, .3);
+	line-height: 30px;
+	text-align: center;
+	font-family: 'icomoon';
+	font-size: 20px;
+	color: rgba(255, 255, 255, .7);
+}
+
+.focus .prev:hover,
+.focus .next:hover {
+	color: #c81623;
+}
+
+.focus .prev {
+	left: 0;
+	border-radius: 0 15px 15px 0;
+	text-indent: -3px;
+}
+
+.focus .prev::after {
+	content: '\e901';
+}
+
+.focus .next {
+	right: 0;
+	border-radius: 15px 0 0 15px;
+	text-indent: 3px;
+}
+
+.focus .next::after {
+	content: '\e902';
+}
+
+/* 轮播图指示灯 */
+.nav-indicator {
+	position: absolute;
+	left: 360px;
+	bottom: 15px;
+	margin-left: -50px;
+	width: 100px;
+	height: 16px;
+	background: rgba(0, 0, 0, .3);
+	border-radius: 8px;
+}
+
+.nav-indicator ul li {
+	float: left;
+	width: 12px;
+	height: 12px;
+	margin: 2px 4px 0;
+	background-color: rgba(255, 255, 255, .5);
+	border-radius: 50%;
+}
+
+.nav-indicator .selected {
+	background: rgba(255, 255, 255, 1);
+}
+
+/* 右侧新闻模块 */
+.newsflash {
+	float: right;
+	width: 250px;
+	height: 455px;
+	/* background-color: skyblue; */
+}
+
+/* 上半部分新闻 */
+.news {
+	width: 250px;
+	height: 165px;
+	border: 1px solid #e4e4e4;
+	/* background-color: pink; */
+}
+
+/* 新闻标题栏 */
+.news .news-header {
+	width: 248px;
+	height: 33px;
+	padding: 0 15px;
+	border-bottom: 1px dotted #e4e4e4;
+	line-height: 32px;
+}
+
+.news .news-header h4 {
+	float: left;
+	font-size: 14px;
+	color: #333333;
+}
+
+.news .news-header .more {
+	float: right;
+}
+
+.news .news-header .more::after {
+	font-family: 'icomoon';
+	content: '\e902';
+}
+
+/* 新闻栏 */
+.news .news-body {
+	padding: 5px 15px 0;
+}
+
+.news .news-body ul li {
+	height: 24px;
+	line-height: 24px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+
+/* 中间生活服务 */
+.life-service {
+	height: 209px;
+	border-left: 1px solid #e4e4e4;
+	background: url(../images/icons.png) no-repeat 2px 0;
+}
+
+.life-service ul li {
+	float: left;
+}
+
+.life-service ul li a {
+	display: block;
+	width: 63px;
+	height: 71px;
+	padding-top: 45px;
+	border-right: 1px solid #e4e4e4;
+	border-bottom: 1px solid #e4e4e4;
+	text-align: center;
+}
+
+/* 每行最后一个元素宽度窄一点 */
+.life-service ul li:nth-child(4n) a {
+	width: 60px;
+}
+
+/* 最后一行元素高度矮一点 */
+.life-service ul li:nth-child(n+9) a {
+	height: 67px;
+}
+
+
+/* 下面甩卖 */
+.bargain {
+	width: 250px;
+	height: 75px;
+	margin-top: 5px;
+}
+
+.bargain img {
+	width: 100%;
+	height: 100%;
+}
+
+
