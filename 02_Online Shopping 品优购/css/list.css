@@ -1,0 +1,170 @@
+/* Header 秒杀 */
+.buy {
+	position: absolute;
+	top: 40px;
+	left: 185px;
+	padding: 3px 14px;
+	border-left: 1px solid #b1191a;
+}
+
+/* 头部导航栏左侧加粗部分 */
+.nav .bold {
+	float: left;
+}
+
+.nav .bold ul li {
+	float: left;
+}
+
+.nav .bold ul li a {
+	display: block;
+	height: 45px;
+	padding: 0 28px;
+	line-height: 45px;
+	font-size: 16px;
+	font-weight: 700;
+	color: #000000;
+}
+
+.nav .bold ul li a:hover {
+	background-color: #e12228;
+	color: #ffffff;
+}
+
+/* 头部导航栏右侧内容部分 */
+.nav .w .navitems {
+	margin-left: 8px;
+	line-height: 48px;
+}
+
+.nav .w .navitems ul li {
+	padding: 0 22px;
+}
+
+.nav .w .navitems ul li a {
+	padding: 0;
+	font-size: 12px;
+	color: #666666;
+}
+
+.nav .w .navitems ul li a:hover {
+	background-color: transparent;
+	color: #b1191a;
+}
+
+/* 选中就变红色 */
+.nav .w .navitems ul li .selected {
+	color: #b1191a;
+}
+
+/* 最后一个的小箭头 */
+.nav .w .navitems ul li:last-child a::after {
+	margin-left: 5px;
+	font-family: 'icomoon';
+	content: '\e900';
+}
+
+/* 商品列表 */
+/* 最上面的大横幅 */
+.buy-head {
+	margin-bottom: 21px;
+}
+
+
+/* 列表内容 */
+.buy-body ul li {
+	float: left;
+	width: 290px;
+	height: 460px;
+	margin-top: 5px;
+	margin-right: 13px;
+	/* background-color: pink; */
+}
+
+.buy-body ul li:nth-child(4n) {
+	margin-right: 0;
+}
+
+.buy-body ul li:hover .description {
+	border-color: #e12228;
+}
+
+/* 定义每个商品的样式 */
+.product .description {
+	height: 410px;
+	border: 1px solid transparent;
+	border-bottom: 0;
+}
+
+.product .description .thumbnail {
+	width: 283px;
+	height: 290px;
+	margin: 0 auto 5px;
+}
+
+.product .description h5 {
+	margin: 0 12px 5px;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.product .description .price {
+	margin: 0 12px 3px;
+	font-size: 14px;
+	color: #e60012;
+}
+
+.product .description .price span {
+	font-size: 22px;
+	/* font-weight: 700; */
+}
+
+.product .description .price del {
+	margin-left: 8px;
+	color: #a4a4a4;
+}
+
+.product .description .process {
+	margin: 0 12px;
+	height: 16px;
+	line-height: 16px;
+}
+
+.product .description .process p,
+.product .description .process .outline {
+	float: left;
+	font-size: 14px;
+}
+
+.product .description .process p:first-child {
+	line-height: 18px;
+}
+
+.product .description .process span {
+	font-size: 16px;
+	color: #e12228;
+}
+
+.product .description .process .outline {
+	width: 132px;
+	height: 12px;
+	margin: 3px 5px;
+	border: 1px solid #e12228;
+	border-radius: 6px;
+}
+
+.product .description .process .inside {
+	width: 87%;
+	height: 100%;
+	background-color: #ed282e;
+	border-radius: 3px 0 0 3px;
+}
+
+.product .buy-now {
+	height: 50px;
+	background-color: #b1191a;
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 50px;
+}
