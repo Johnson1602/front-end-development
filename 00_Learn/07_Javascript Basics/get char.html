@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Get Character</title>
+	<script>
+		// 查找并输出f的位置，以及总共出现的次数
+		var str = 'sdjfnwiouevzkhjxdhalsudhnfqeyurofg';
+		var index = str.indexOf('f');
+		var count = 0;
+		var result = [];
+
+		while (index != -1) {
+			result.push(index);
+			count++;
+			index = str.indexOf('f', ++index);
+		}
+
+		console.log(result + '\n' + count);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
