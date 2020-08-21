@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Use Innertext to Show Current Time</title>
+	<style>
+		div {
+			width: 500px;
+			height: 30px;
+			margin-top: 10px;
+			background-color: #ccc;
+		}
+
+		#event {
+			display: inline-block;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+<body>
+	<button>Show Current Time</button>
+	<div id="event"></div>
+	<div id="current-time"></div>
+	<script>
+		var btn = document.querySelector('button');
+		var divEvent = document.querySelector('#event');
+		// 可以注册事件
+		// 可以使用 innerText
+		btn.onclick = function() {
+			divEvent.innerText = new Date();
+		}
+
+		// 也可以浏览器加载直接运行
+		// 但是更推荐使用 innerHTML
+		var onPageLoad = document.querySelector('#current-time');
+		onPageLoad.innerHTML = new Date();
+
+		// 不仅可以赋值，也可以获取内容
+		var content = document.querySelector('button').innerHTML;
+		console.log('Button content: ' + content);
+	</script>
+</body>
+</html>

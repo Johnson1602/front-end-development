@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sprite</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		.service {
+			width: 289px;
+			border-top: 1px solid #cccccc;
+			margin: 100px auto;
+		}
+
+		.service ul li {
+			float: left;
+			height: 76px;
+			border-right: 1px solid #cccccc;
+			border-bottom: 1px solid #cccccc;
+			text-align: center;
+			font-size: 12px;
+		}
+
+		.service ul li span {
+			display: block;
+			width: 24px;
+			height: 24px;
+			margin: 13px auto 10px;
+			background: url(images/sprite.png) no-repeat;
+		}
+
+		.service ul li:nth-child(4n) {
+			border-right: 0;
+		}
+
+		.service ul li:nth-child(2n+1) {
+			width: 71px;
+		}
+
+		.service ul li:nth-child(2n) {
+			width: 72px;
+		}
+	</style>
+</head>
+<body>
+	<div class="service">
+		<ul>
+			<li><span></span>Placeholder</li>
+			<li><span></span>Placeholder</li>
+			<li><span></span>Placeholder</li>
+			<li><span></span>Placeholder</li>
+			<li><span></span>Placeholder</li>
+			<li><span></span>Placeholder</li>
+			<li><span></span>Placeholder</li>
+			<li><span></span>Placeholder</li>
+			<li><span></span>Placeholder</li>
+			<li><span></span>Placeholder</li>
+			<li><span></span>Placeholder</li>
+			<li><span></span>Placeholder</li>
+		</ul>
+	</div>
+
+	<script>
+		var spans = document.querySelectorAll('span');
+		console.log(spans);
+		for (var i = 0; i < spans.length; i++) {
+			var shift = i * 44;
+			spans[i].style.backgroundPosition = '0 -' + shift + 'px';
+		}
+	</script>
+</body>
+</html>

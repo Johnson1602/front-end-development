@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Get Element By Id</title>
+</head>
+<body>
+	<div id="time">2020/08/20</div>
+	<!-- 由于浏览器渲染是从上往下，所以要想JS获得页面中的元素，要把JS写在最后 -->
+	<script>
+		var element = document.getElementById('time');
+		// 看一下 get 到的是什么元素
+		console.log(element);
+		// 看一下 get 到的东西是什么数据类型
+		console.log(typeof element);
+		// 看一下 get 到的东西的属性
+		console.dir(element);
+	</script>
+</body>
+</html>

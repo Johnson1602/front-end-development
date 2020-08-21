@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Event</title>
+</head>
+<body>
+	<button id="tang">唐伯虎</button>
+	<script>
+		// 事件三要素：谁 在什么情况下 干了什么事
+		// 1. 首先获取“谁”
+		var tang = document.querySelector('#tang');
+		// 2. 触发条件：在点击时 onclick
+		tang.onclick = function() {
+			// 干了什么事
+			alert('点秋香');
+		};
+	</script>
+</body>
+</html>

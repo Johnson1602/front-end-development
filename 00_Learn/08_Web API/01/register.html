@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.register {
+			width: 500px;
+			height: 300px;
+			margin: 100px auto;
+		}
+
+		.register input {
+			float: left;
+			display: block;
+			outline: none;
+		}
+
+		.register .info {
+			float: left;
+			width: 200px;
+			height: 20px;
+			margin-left: 5px;
+			padding-left: 20px;
+			background: url(images/mess.png) no-repeat left center;
+			font-size: 12px;
+			line-height: 20px;
+			color: #333333;
+		}
+
+		.register .wrong {
+			background-image: url(images/wrong.png);
+			color: red;
+		}
+
+		.register .right {
+			background-image: url(images/right.png);
+			color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="register">
+		<form action="">
+			<input type="password" name="password" id="pwd">
+			<p class="info">请输入6~16位密码</p>
+		</form>
+	</div>
+
+	<script>
+		var pwd = document.getElementById('pwd');
+		console.log(pwd);
+		var info = document.querySelector('.info');
+		console.log(info);
+
+		pwd.onblur = function() {
+			console.log(pwd.value);
+			if (this.value.length < 6 || this.value.length > 16) {
+				console.log('wrong');
+				info.className = 'info wrong';
+				info.innerHTML = '请输入6~16位密码';
+			} else {
+				info.className = 'info right';
+				info.innerHTML = '';
+			}
+		};
+	</script>
+</body>
+</html>

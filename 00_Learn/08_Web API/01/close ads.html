@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Close QR Code</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.qr-code {
+			position: relative;
+			width: 76px;
+			height: 90px;
+			margin: 100px auto;
+			/* background-color: pink; */
+		}
+
+		.box {
+			width: 75px;
+			height: 89px;
+			border: 1px solid #cccccc;
+			font-size: 12px;
+			text-align: center;
+		}
+
+		.box p {
+			margin: 2px 0;
+			color: #ff7637;
+		}
+
+		.box img {
+			width: 62px;
+			height: 62px;
+		}
+
+		.close {
+			position: absolute;
+			top: 0;
+			left: -17px;
+			width: 15px;
+			height: 15px;
+			border: 1px solid #cccccc;
+			font-size: 12px;
+			line-height: 15px;
+			text-align: center;
+			color: #cccccc;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="qr-code">
+		<div class="close">x</div>
+		<div class="box">
+			<p>手机淘宝</p>
+			<img src="images/taobao.png" alt="taobao">
+		</div>
+	</div>
+
+	<script>
+		var closeAd = document.querySelector('.close');
+		// var box = document.querySelector('.qr-code');
+		var box = document.getElementsByClassName('qr-code');
+		console.log(box);
+
+		closeAd.onclick = function() {
+			// 这是一个坑，因为getElementsByClassName返回的是一个为数组
+			// 所以想操作的时候必须要用下面这种形式取出其中的元素
+			box[0].style.display = 'none';
+		};
+	</script>
+</body>
+</html>

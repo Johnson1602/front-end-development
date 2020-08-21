@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Query Selector</title>
+	<style>
+		.box {
+			width: 100px;
+			height: 100px;
+			margin: 10px;
+			background-color: pink;
+			line-height: 100px;
+			text-align: center;
+		}
+
+		li {
+			float: left;
+			list-style: none;
+			width: 100px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			background-color: skyblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">Box 1</div>
+	<div class="box">Box 2</div>
+
+	<div id="nav">
+		<ul>
+			<li>1</li>
+			<li>2</li>
+		</ul>
+	</div>
+	
+	<script>
+		// querySelector only choose the first one
+		var box = document.querySelector('.box');
+		console.log(box);
+		var li = document.querySelector('li');
+		console.log(li);
+		var nav = document.querySelector('#nav');
+		console.log(nav);
+
+		// querySelectorAll chooses all
+		var boxes = document.querySelectorAll('.box');
+		console.log(boxes);
+		var lis = document.querySelectorAll('li');
+		console.log(lis);
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Get Elements By Tag Name</title>
+</head>
+<body>
+	<ul id="first">
+		<li>First group 1</li>
+		<li>First group 2</li>
+		<li>First group 3</li>
+		<li>First group 4</li>
+		<li>First group 5</li>
+	</ul>
+
+	<ul id="second">
+		<li>Second group 1</li>
+		<li>Second group 2</li>
+		<li>Second group 3</li>
+		<li>Second group 4</li>
+		<li>Second group 5</li>
+	</ul>
+
+	<script>
+		// 先拿到所有 li 看看
+		// 注意传参是字符串类型
+		var allLis = document.getElementsByTagName('li');
+		console.log(allLis);
+		for (var i  = 0; i < allLis.length; i++) {
+			console.log(allLis[i]);
+		}
+
+		// 只拿到 id 为 second 的 ul 里的 li
+		var secondGroup = document.getElementById('second');
+		var secondGroupLis = secondGroup.getElementsByTagName('li');
+		console.log('================\n');
+		console.log(secondGroupLis);
+		for (var i = 0; i < secondGroupLis.length; i++) {
+			console.log(secondGroupLis[i]);
+		}
+	</script>
+</body>
+</html>
