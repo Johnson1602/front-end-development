@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Toggle Light</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		button {
+			margin: 20px;
+			padding: 0 20px;
+		}
+	</style>
+</head>
+<body>
+	<button>关灯</button>
+
+	<script>
+		var toggle = document.querySelector('button');
+		// console.log(toggle);
+		flag = 0;
+		toggle.onclick = function() {
+			if (flag == 0) {
+				document.body.style.backgroundColor = '#000000';
+				this.innerHTML = '开灯';
+				flag = 1;
+			} else {
+				document.body.style.backgroundColor = '#ffffff';
+				this.innerHTML = '关灯';
+				flag = 0;
+			}
+		}
+	</script>
+</body>
+</html>

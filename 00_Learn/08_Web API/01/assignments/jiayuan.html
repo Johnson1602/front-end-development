@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>世纪佳缘</title>
+	<style>
+		#username {
+			width: 124px;
+			height: 24px;
+			padding-left: 10px;
+			border: 1px solid #cccccc;
+			color: #cccccc;
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="username" value="邮箱/ID/手机号">
+
+	<script>
+		var username = document.getElementById('username');
+		username.onfocus = function() {
+			this.style.borderColor = '#ffd6db';
+			if (this.value == '邮箱/ID/手机号') {
+				this.value = '';
+			} else {
+				this.style.color = '#cccccc';
+			}
+		}
+		username.onblur = function() {
+			this.style.borderColor = '#cccccc';
+			if (this.value == '') {
+				this.value = '邮箱/ID/手机号';
+			} else {
+				this.style.color = '#333333';
+			}
+		}
+	</script>
+</body>
+</html>

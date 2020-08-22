@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Close Ads</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.ad {
+			position: relative;
+			height: 80px;
+			background-color: skyblue;
+		}
+
+		.close {
+			position: absolute;
+			top: 15px;
+			right: 30px;
+			width: 15px;
+			height: 15px;
+			border: 1px solid red;
+			color: red;
+			line-height: 15px;
+			font-size: 12px;
+			text-align: center;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="ad">
+		<div class="close">x</div>
+	</div>
+
+	<script>
+		var closeAd = document.querySelector('.close');
+		var ad = document.querySelector('.ad');
+		closeAd.onclick = function() {
+			ad.style.display = 'none';
+		}
+	</script>
+</body>
+</html>

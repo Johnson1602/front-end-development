@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sina Dropdown</title>
+	<style>
+		@font-face {
+			font-family: 'icomoon';
+			src:  url('../fonts/icomoon.eot?cif9la');
+			src:  url('../fonts/icomoon.eot?cif9la#iefix') format('embedded-opentype'),
+			url('../fonts/icomoon.ttf?cif9la') format('truetype'),
+			url('../fonts/icomoon.woff?cif9la') format('woff'),
+			url('../fonts/icomoon.svg?cif9la#icomoon') format('svg');
+			font-weight: normal;
+			font-style: normal;
+			font-display: block;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		.clearfix::before,
+		.clearfix::after {
+			display: table;
+			content: '';
+		}
+
+		.clearfix::after {
+			clear: both;
+		}
+
+		.clearfix {
+			*zoom: 1;
+		}
+
+		.nav {
+			width: 75px;
+			margin: 100px auto;
+			border-top: 3px solid #ff8500;
+		}
+
+		.nav ul li {
+			float: left;
+		}
+
+		.nav ul li .dt {
+			/* float: left; */
+			width: 75px;
+			height: 40px;
+			border-bottom: 1px solid #cccccc;
+			line-height: 40px;
+			text-align: center;
+			font-size: 12px;
+			cursor: pointer;
+		}
+
+		.nav ul li .dt::after {
+			margin-left: 5px;
+			content: '\e900';
+			font-family: 'icomoon';
+			color: #ff8400;
+		}
+
+		.nav ul li .dt:hover {
+			color: #ff8400;
+			/* background-color: #edeef0; */
+			/* border-bottom: 1px solid transparent; */
+		}
+
+		.nav ul li .dd {
+			display: none;
+			width: 75px;
+			height: 108px;
+			box-shadow: 2px 5px 10px rgba(0, 0, 0, .1);
+		}
+
+		.nav .dd ul li {
+			width: 58px;
+			height: 35px;
+			border: 1px solid #ebbe7a;
+			border-top: 0;
+			line-height: 35px;
+			padding-left: 15px;
+			font-size: 12px;
+			cursor: pointer;
+		}
+
+		.nav .dd ul li:hover {
+			background-color: #fff5da;
+			color: #ff8400;
+		}
+	</style>
+</head>
+<body>
+	<nav class="nav">
+		<ul>
+			<li id="weibo">
+				<div class="dt">微博</div>
+				<div class="dd">
+					<ul>
+						<li>私信</li>
+						<li>评论</li>
+						<li>@我</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</nav>
+
+	<script>
+		var weibo = document.querySelector('#weibo');
+		var dt = document.querySelector('.dt');
+		var dd = document.querySelector('.dd');
+		// 必须针对父元素添加 onmouserover
+		// 才能保证离开“微博”时，下拉菜单还能继续显示
+		weibo.onmouseover = function() {
+			dd.style.display = 'block';
+			dt.style.borderBottom = '1px solid transparent';
+			dt.style.backgroundColor = '#edeef0';
+		};
+
+		weibo.onmouseout = function() {
+			dd.style.display = 'none';
+			dt.style.borderBottom = '1px solid #cccccc';
+			dt.style.backgroundColor = '#ffffff';
+		}
+	</script>
+</body>
+</html>
