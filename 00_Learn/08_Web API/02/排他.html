@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>排他</title>
+	<style>
+		button {
+			padding: 5px 15px;
+		}
+	</style>
+</head>
+<body>
+	<button>1</button>
+	<button>2</button>
+	<button>3</button>
+	<button>4</button>
+	<button>5</button>
+
+	<script>
+		var btns = document.getElementsByTagName('button');
+
+		// 给每个 btn 绑定事件
+		for (var i = 0; i < btns.length; i++) {
+			// 拿出其中一个 btn
+			btns[i].onclick = function() {
+				// 第一步：清除所有元素的背景颜色
+				for (var j = 0; j < btns.length; j++) {
+					btns[j].style.backgroundColor = '';
+				}
+				// 第二步：给自己设置背景颜色
+				this.style.backgroundColor = 'pink';
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sina Dropdown</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		a {
+			text-decoration: none;
+			color: #333333;
+		}
+
+		.nav {
+			width: 1200px;
+			height: 30px;
+			margin: 0 auto;
+			background-color: #eee;
+			border-top: 2px solid orange;
+		}
+
+		.nav-item {
+			position: relative;
+			float: left;
+			line-height: 30px;
+		}
+
+		.nav-item>a {
+			display: block;
+			height: 30px;
+			padding: 0 20px;
+		}
+
+		.nav-item>a:hover {
+			background-color: #fff5da;
+		}
+
+		/* .nav-item:hover .dropdown {
+			display: block;
+		} */
+
+		.nav-item .dropdown {
+			/* display: none; */
+			position: absolute;
+			top: 30px;
+			left: 0;
+		}
+
+		.nav-item .dropdown a {
+			display: block;
+			padding: 0 14px;
+			height: 29px;
+			border: 1px solid orange;
+			border-top: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<ul>
+			<li class="nav-item">
+				<a href="#">微博</a>
+				<ul class="dropdown">
+					<li><a href="#">按钮1</a></li>
+					<li><a href="#">按钮2</a></li>
+					<li><a href="#">按钮3</a></li>
+				</ul>
+			</li>
+			<li class="nav-item">
+				<a href="#">微博</a>
+				<ul class="dropdown">
+					<li><a href="#">按钮1</a></li>
+					<li><a href="#">按钮2</a></li>
+					<li><a href="#">按钮3</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Select / Deselect All</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		div {
+			width: fit-content;
+			margin: 100px auto;
+		}
+
+		table {
+			width: 220px;
+			border-collapse: collapse;
+			text-align: center;
+		}
+
+		tr {
+			height: 30px;
+		}
+
+		table thead tr {
+			background-color: #2ca3d2;
+		}
+
+		table,
+		tr,
+		th,
+		td {
+			border: 1px solid #cccccc;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>
+						<input type="checkbox" name="select-all" id="select-all">
+					</th>
+					<th>商品</th>
+					<th>价格</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>
+						<input type="checkbox" name="iphone" id="">
+					</td>
+					<td>iPhone 12</td>
+					<td>7000</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" name="iphone" id="">
+					</td>
+					<td>iPhone 12</td>
+					<td>7000</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" name="iphone" id="">
+					</td>
+					<td>iPhone 12</td>
+					<td>7000</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" name="iphone" id="">
+					</td>
+					<td>iPhone 12</td>
+					<td>7000</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+		// 第一步：实现点击全选按钮，全选或反选下面的按钮
+		// 思路：获取全选按钮的 checked 属性，并赋值给下面所有按钮
+		var selectAll = document.getElementById('select-all');
+		var checkBox = document.querySelector('tbody').querySelectorAll('input');
+		selectAll.onclick = function() {
+			for (var i = 0; i < checkBox.length; i++) {
+				checkBox[i].checked = this.checked;
+			}
+		}
+
+		// 第二步：实现当下面所有复选框全部选中时，上面的全选框才会显示选中，否则显示不选中
+		// 思路：使用 flag 变量存储全选框状态，复选框全部选中为 true，否则为 false
+		// 为每个复选框注册事件，所以要使用循环
+		for (var i = 0; i < checkBox.length; i++) {
+			checkBox[i].onclick = function() {
+				var flag = true;
+				for (var j = 0; j < checkBox.length; j++) {
+					if (!checkBox[j].checked) {
+						flag = false;
+						break;
+					}
+				}
+				// 全部检查完之后，给全选框赋值
+				selectAll.checked = flag;
+			}
+		}
+	</script>
+</body>
+</html>

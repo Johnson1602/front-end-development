@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Table Row Highlight</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.stock {
+			width: fit-content;
+			margin: 100px auto;
+			/* background-color: pink; */
+			text-align: center;
+		}
+
+		.stock table {
+			width: 800px;
+			border-collapse: collapse;
+			font-size: 14px;
+		}
+
+		.stock table tr {
+			height: 30px;
+		}
+
+		.stock table thead tr {
+			background-color: #87ceeb;
+		}
+
+		.stock table tbody tr {
+			border-bottom: 1px solid #d7d7d7;
+		}
+
+		.highlight {
+			background-color: pink;
+		}
+
+		/* table,
+		tr,
+		td,
+		th {
+			border: 1px solid red;
+		} */
+
+	</style>
+</head>
+<body>
+	<div class="stock">
+		<table>
+			<thead>
+				<tr>
+					<th>代码</th>
+					<th>名称</th>
+					<th>最新公布净值</th>
+					<th>累计净值</th>
+					<th>前单位净值</th>
+					<th>净值增长率</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>003526</td>
+					<td>农金银穗3个月定期开放债券</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+				<tr>
+					<td>003526</td>
+					<td>农金银穗3个月定期开放债券</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+				<tr>
+					<td>003526</td>
+					<td>农金银穗3个月定期开放债券</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+				<tr>
+					<td>003526</td>
+					<td>农金银穗3个月定期开放债券</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+				<tr>
+					<td>003526</td>
+					<td>农金银穗3个月定期开放债券</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+				<tr>
+					<td>003526</td>
+					<td>农金银穗3个月定期开放债券</td>
+					<td>1.075</td>
+					<td>1.079</td>
+					<td>1.074</td>
+					<td>+0.047%</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<script>
+		var rows = document.querySelector('tbody').querySelectorAll('tr');
+		for (var i = 0; i < rows.length; i++) {
+			rows[i].onmouseover = function() {
+				this.className = 'highlight';
+			}
+
+			rows[i].onmouseout = function() {
+				this.className = '';
+			}
+		}
+	</script>
+</body>
+</html>

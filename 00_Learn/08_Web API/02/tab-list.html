@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tab List</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		.content {
+			width: 798px;
+			height: 38px;
+			margin: 100px auto;
+			border: 1px solid #cccccc;
+			background-color: #eeeeee;
+		}
+
+		.tab-list {
+			height: 38px;
+		}
+
+		.tab-list ul li {
+			float: left;
+			/* height: 38px; */
+			padding: 0 15px;
+			line-height: 38px;
+			font-size: 16px;
+			color: #333333;
+			cursor: pointer;
+		}
+
+		.tab-list .selected {
+			background-color: #c82524;
+			color: #ffffff;
+		}
+
+		.tab-content div {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="tab-list">
+			<ul>
+				<li class="selected">商品介绍</li>
+				<li>规格与包装</li>
+				<li>售后保障</li>
+				<li>商品评价（5000）</li>
+				<li>手机社区</li>
+			</ul>
+		</div>
+
+		<div class="tab-content">
+			<div style="display: block;">
+				商品介绍模块
+			</div>
+
+			<div>
+				规格与包装模块
+			</div>
+
+			<div>
+				售后保障模块
+			</div>
+
+			<div>
+				商品评价（5000）模块
+			</div>
+
+			<div>
+				手机社区模块
+			</div>
+		</div>
+	</div>
+
+	<script>
+		// 目标：选中上面的模块，下面就显示相应的内容
+		// 所以既要拿到上面的每个 li，又要拿到下面的每个 div
+		var tabListItem = document.querySelector('.tab-list').querySelectorAll('li');
+		var tabContentItem = document.querySelector('.tab-content').querySelectorAll('div');
+
+		// var wrapper = document.querySelector('.content');
+		// console.log(wrapper.getAttribute('class'));
+		// wrapper.setAttribute('index', '000');
+
+		for (var i = 0; i < tabListItem.length; i++) {
+			// 1. 先给他们添加 index 属性
+			tabListItem[i].setAttribute('index', i);
+
+			// 2. 点击模块显示相应内容，给每个 li 绑定事件
+			tabListItem[i].onclick = function() {
+				// console.log(this.getAttribute());
+				// 2.1 当选中时，更改自身样式（先把所有 li 样式都清空）
+				for (var i = 0; i < tabListItem.length; i++) {
+					tabListItem[i].className = '';
+				}
+				this.className = 'selected';
+
+				// 2.2 根据 index 显示相应的内容模块（先把所有模块都隐藏）
+				for (var i = 0; i < tabListItem.length; i++) {
+					tabContentItem[i].style.display = 'none';
+				}
+				tabContentItem[this.getAttribute('index')].style.display = 'block';
+			}
+		}
+	</script>
+</body>
+</html>

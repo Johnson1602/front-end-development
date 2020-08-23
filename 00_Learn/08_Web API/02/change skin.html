@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Change Skin</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		body {
+			background: url(images/1.jpg) no-repeat center top;
+		}
+
+		.skin-selector {
+			width: 420px;
+			height: 70.5px;
+			margin: 100px auto;
+			background-color: #ffffff;
+		}
+
+		.skin-selector ul li {
+			float: left;
+			margin-top: 4px;
+			margin-left: 4px;
+		}
+
+		img {
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div class="skin-selector">
+		<ul>
+			<li><img src="images/1.jpg" alt=""></li>
+			<li><img src="images/2.jpg" alt=""></li>
+			<li><img src="images/3.jpg" alt=""></li>
+			<li><img src="images/4.jpg" alt=""></li>
+		</ul>
+	</div>
+
+	<script>
+		var imgs = document.querySelector('.skin-selector').querySelectorAll('img');
+		for (var i = 0; i < imgs.length; i++) {
+			imgs[i].onclick = function() {
+				document.body.style.backgroundImage = 'url(' + this.src + ')';
+			}
+		}
+	</script>
+</body>
+</html>
