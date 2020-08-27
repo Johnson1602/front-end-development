@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Message Board With Delete Function</title>
+	<style>
+		a {
+			/* text-decoration: none; */
+			color: #333333;
+		}
+
+		.wrapper {
+			margin: 100px;
+		}
+
+		.edit {
+			margin-bottom: 30px;
+		}
+
+		.show ul li {
+			width: 200px;
+			height: 30px;
+			margin-bottom: 5px;
+			font-size: 14px;
+			line-height: 30px;
+			background-color: pink;
+		}
+
+		.show ul li a {
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="edit">
+			<textarea name="message" id="" cols="30" rows="10"></textarea>
+			<button>Submit</button>
+		</div>
+
+		<div class="show">
+			<ul>
+			</ul>
+		</div>
+	</div>
+
+	<script>
+		var btn = document.querySelector('button');
+		var text = document.querySelector('textarea');
+		var ul = document.querySelector('ul');
+
+		btn.onclick = function() {
+			var content = text.value;
+			// 检查提交的留言是否为空
+			if (content == '') {
+				alert('Please input your message!');
+				return;
+			} else {
+				// 1. 创建元素
+				var message = document.createElement('li');
+				message.innerHTML = content + '<a href="javascript:;">删除</a>';
+
+				// 2. 插入元素
+				ul.insertBefore(message, ul.children[0]);
+
+				// 3. 删除元素
+				// 给新插入的这个 li 里面的 a 注册事件，从 ul 中删除这个 a 所在的 li
+				var deleteMessage = document.querySelector('a');
+				deleteMessage.onclick = function() {
+					ul.removeChild(this.parentNode);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Follow Angle</title>
+	<style>
+		body {
+			height: 3000px;
+		}
+
+		img {
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<img src="images/angel.gif" alt="angle">
+
+	<script>
+		var angle = document.querySelector('img');
+
+		document.addEventListener('mousemove', function(e) {
+			// 由于图片使用的是绝对定位，并且它的父元素都没有设置定位方式
+			// 所以绝对定位的参照物是最外层的 document
+			// 所以获取鼠标的位置应该是相对于整个 document 的位置，即 pageX & pageY
+			// 如果使用的是相对视窗的 clientX & clientY，那么超过视窗高度以后，图片就会停留在上面
+			// var x = e.clientX;
+			// var y = e.clientY;
+
+			var x = e.pageX;
+			var y = e.pageY;
+
+			angle.style.left = x - 30 + 'px';
+			angle.style.top = y - 60 + 'px';
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dynamic Table</title>
+	<style>
+		table {
+			width: 500px;
+			margin: 100px auto;
+			border-collapse: collapse;
+			text-align: center;
+		}
+
+		table,
+		th,
+		td {
+			border: 1px solid #333333;
+		}
+
+		th {
+			height: 40px;
+			line-height: 40px;
+			background-color: #cccccc;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<th>姓名</th>
+			<th>科目</th>
+			<th>成绩</th>
+			<th>操作</th>
+		</thead>
+		<tbody></tbody>
+	</table>
+
+	<script>
+		// 1. 首先准备数据，使用数组存储对象
+		var studentData = [{
+			name: 'Student 1',
+			subject: 'Javascript',
+			grade: 'A'
+		}, {
+			name: 'Student 2',
+			subject: 'Javascript',
+			grade: 'B'
+		}, {
+			name: 'Student 3',
+			subject: 'Javascript',
+			grade: 'C'
+		}, {
+			name: 'Student 4',
+			subject: 'Javascript',
+			grade: 'D'
+		}];
+
+		// 2. 向表格 tbody 中插入学生数据，分为三步：先创建 tr，再创建数据 td，在创建功能 td
+		// 首先获取需要操作的元素
+		var tbody = document.querySelector('tbody');
+
+		// 使用循环将每个学生依次放入表中
+		for (var i = 0; i < studentData.length; i++) {
+			// 2.1 创建行 tr
+			var tr = document.createElement('tr');
+			tbody.appendChild(tr);
+
+			// 2.2 create td from studentData
+			for (var k in studentData[i]) {
+				var td = document.createElement('td');
+				td.innerHTML = studentData[i][k];
+				tr.appendChild(td);
+			}
+
+			// 2.3 create td for operations
+			var td = document.createElement('td');
+			td.innerHTML = '<a href="javascript:;">Delete</a>';
+			tr.appendChild(td);
+		}
+
+		// register event for each delete link
+		var aDelete = document.querySelectorAll('a');
+		for (var i = 0; i < aDelete.length; i++) {
+			aDelete[i].onclick = function() {
+				tbody.removeChild(this.parentNode.parentNode);
+			}
+		}
+	</script>
+</body>
+</html>
