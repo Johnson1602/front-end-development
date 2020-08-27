@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Auto Jump</title>
+	<style>
+		p {
+			width: fit-content;
+			margin: 100px auto;
+		}
+	</style>
+</head>
+<body>
+	<p></p>
+
+	<script>
+		var message = document.querySelector('p');
+		var timer = 4;
+		message.innerHTML = 'Jump to Google in 5 seconds...';
+
+		setInterval(function() {
+			if (timer == 0) {
+				location.href = 'https://www.google.com';
+			} else {
+				message.innerHTML = 'Jump to Google in ' + timer + ' seconds...';
+				timer--;
+			}
+		}, 1000)
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bigger Content</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.search {
+			position: relative;
+			width: 300px;
+			height: 80px;
+			margin: 100px;
+			/* background-color: #eeeeee; */
+		}
+
+		.content {
+			position: absolute;
+			display: none;
+			top: 0;
+			left: 0;
+			width: 282px;
+			height: 35px;
+			border: 1px solid #cccccc;
+			box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
+			line-height: 35px;
+			font-size: 20px;
+			/* background-color: pink; */
+		}
+
+		.content::before {
+			position: absolute;
+			/* z-index: 1; */
+			top: 35px;
+			left: 15px;
+			width: 0;
+			height: 0;
+			border: 7px solid transparent;
+			border-top-color: #ffffff;
+			/* box-shadow: 0 5px 5px rgba(0, 0, 0, .2); */
+			/* background-color: skyblue; */
+			content: '';
+		}
+
+		.number {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 280px;
+			height: 25px;
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="search">
+		<div class="content">123</div>
+		<input type="text" placeholder="Please input your tracking number" class="number">
+	</div>
+
+	<script>
+		var number = document.querySelector('.number');
+		var content = document.querySelector('.content');
+
+		// when there's no input, number.value == ''
+		// console.log(number.value == null);  // false
+		// console.log(number.value == '');  // true
+
+		// let input get focus when press 's'
+		document.addEventListener('keyup', function(e) {
+			if (e.keyCode == 83) {
+				number.focus();
+			}
+		})
+
+		// when user input number, show bigger content
+		number.addEventListener('keyup', function() {
+			if (this.value == '') {
+				content.style.display = 'none';
+			} else {
+				content.style.display = 'block';
+				content.innerHTML = this.value;
+			}
+		})
+
+		number.addEventListener('focus', function() {
+			if (this.value != '') {
+				content.style.display = 'block';
+			}
+		})
+
+		number.addEventListener('blur', function() {
+			content.style.display = 'none';
+		})
+	</script>
+</body>
+</html>

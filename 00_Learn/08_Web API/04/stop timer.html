@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stop Timer</title>
+</head>
+<body>
+	<button>Stop Timer</button>
+
+	<script>
+		var btn = document.querySelector('button');
+
+		var timer = setTimeout(function() {
+			alert('Time out!');
+		}, 3000)
+
+		btn.addEventListener('click', function() {
+			clearTimeout(timer);
+			console.log('Safe!');
+		})
+	</script>
+</body>
+</html>

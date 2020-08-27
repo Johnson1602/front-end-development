@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Send Message</title>
+</head>
+<body>
+	Please enter your phone number: <input type="text"> <button>Send</button>
+
+	<script>
+		var btn = document.querySelector('button');
+
+		btn.addEventListener('click', function() {
+			this.disabled = true;
+			this.innerHTML = 'Resend after 5 s';
+			var waitTime = 4;
+
+			var timer = setInterval(function() {
+				if (waitTime == 0) {
+					clearInterval(timer);
+					btn.disabled = false;
+					btn.innerHTML = 'Resend';
+					waitTime = 4;
+				} else {
+					btn.innerHTML = 'Resend after ' + waitTime + ' s';
+					waitTime--;
+				}
+			}, 1000)
+		})
+	</script>
+</body>
+</html>

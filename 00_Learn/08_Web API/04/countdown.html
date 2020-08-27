@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Countdown</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.countdown {
+			width: fit-content;
+			height: 50px;
+			margin: 100px auto;
+		}
+
+		.countdown span {
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			background-color: #000000;
+			color: #ffffff;
+			font-size: 20px;
+			line-height: 50px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="countdown">
+		<span class="hour">1</span>
+		<span class="minute">2</span>
+		<span class="second">3</span>
+	</div>
+
+	<script>
+		var hour = document.querySelector('.hour');
+		var minute = document.querySelector('.minute');
+		var second = document.querySelector('.second');
+
+		var inputTime = +new Date('2020-8-27 18:00:00');
+		// console.log(typeof inputTime);  // number
+		// console.log(5/3);  // 1.666666666666667
+
+		// on page load run countdown() incase there's white space
+		countdown();
+		// run countdown() every second afterwards
+		setInterval(countdown, 1000);
+
+		function countdown() {
+			var curTime = +new Date();
+			// get remaining time (in seconds)
+			var remainTime = (inputTime - curTime) / 1000;
+			var h = parseInt(remainTime / 60 / 60 % 24);
+			var m = parseInt(remainTime / 60 % 60);
+			var s = parseInt(remainTime % 60);
+
+			hour.innerHTML = h;
+			minute.innerHTML = m;
+			second.innerHTML = s;
+		}
+	</script>
+</body>
+</html>
