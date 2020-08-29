@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>模态框跟随鼠标移动</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		a {
+			text-decoration: none;
+			color: #333333;
+		}
+
+		h1 {
+			padding-right: 20px;
+			text-align: right;
+		}
+
+		/* Login Form */
+		.login {
+			display: none;
+			position: absolute;
+			z-index: 1;
+			width: 500px;
+			height: 300px;
+			border: 1px solid #cccccc;
+			border-radius: 5px;
+			background-color: #eeeeee;
+			box-shadow: 0 0 30px rgba(0, 0, 0, .6);
+		}
+
+		.title {
+			position: relative;
+			height: 60px;
+			text-align: center;
+			line-height: 60px;
+			border-bottom: 1px solid #cccccc;
+			background-color: #dddddd;
+			cursor: move;
+		}
+
+		/* close link */
+		.title span {
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			top: -15px;
+			right: -15px;
+			border: 1px solid #cccccc;
+			border-radius: 50%;
+			background-color: #eeeeee;
+			line-height: 30px;
+			cursor: pointer;
+		}
+
+		.login-form {
+			height: 250px;
+			padding-left: 50px;
+		}
+
+		.login-form label {
+			display: inline-block;
+			width: 80px;
+			height: 50px;
+			line-height: 50px;
+		}
+
+		.login-form input {
+			width: 318px;
+			height: 40px;
+			margin-top: 25px;
+			outline: none;
+			font-size: 18px;
+		}
+
+		.login-form input[type=submit] {
+			width: 200px;
+			margin-left: 100px;
+			cursor: pointer;
+		}
+
+		/* mask */
+		.mask {
+			position: fixed;
+			display: none;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0, 0, 0, .5);
+		}
+	</style>
+</head>
+<body>
+	<h1><a href="javascript:;">Click here to login</a></h1>
+	<div class="login">
+		<div class="title">
+			<h2>Welcome Back</h2>
+			<span><a href="javascript:;">X</a></span>
+		</div>
+		<div class="login-form">
+			<form action="">
+				<label for="username">Username: </label><input type="text" name="username" id="username">
+				<label for="pass">Password: </label><input type="password" name="password" id="pass">
+				<input type="submit" value="Login">
+			</form>
+		</div>
+	</div>
+	<div class="mask"></div>
+
+	<script>
+		var h1 = document.querySelector('h1');
+		var login = document.querySelector('.login');
+		var title = document.querySelector('.title');
+		var closeBtn = document.querySelector('span');
+		var mask = document.querySelector('.mask');
+
+		window.addEventListener('load', function() {
+			var width = this.innerWidth;
+			var height = this.innerHeight;
+			login.style.left = width / 2 - 250 + 'px';
+			login.style.top = height / 2 - 150 + 'px';
+		})
+
+		h1.addEventListener('click', function() {
+			login.style.display = 'block';
+			mask.style.display = 'block';
+		})
+
+		closeBtn.addEventListener('click', function() {
+			login.style.display = 'none';
+			mask.style.display = 'none';
+		})
+
+		// drag to move
+		title.addEventListener('mousedown', function(e) {
+			// first calculate mouse relative position in the login form
+			var innerx = e.pageX - login.offsetLeft;
+			var innery = e.pageY - login.offsetTop;
+
+			// update login form's position when mouse moves
+			function follow(e) {
+				login.style.left = e.pageX - innerx + 'px';
+				login.style.top = e.pageY - innery + 'px';
+			}
+
+			document.addEventListener('mousemove', follow);
+
+			// stop following mouse when mouse up
+			this.addEventListener('mouseup', function() {
+				document.removeEventListener('mousemove', follow);
+			})
+		})
+
+	</script>
+</body>
+</html>
