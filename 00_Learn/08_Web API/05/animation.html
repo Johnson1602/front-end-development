@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animation</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		div {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+
+	<script>
+		// get div
+		var div = document.querySelector('div');
+
+		// set timer, move 1 px every 10 ms
+		var timer = setInterval(function() {
+			var offsetLeft = div.offsetLeft;
+			// set stop position to 400px
+			if (offsetLeft >= 400) {
+				clearInterval(timer);
+			} else {
+				// move to the right
+				div.style.left = offsetLeft + 1 + 'px';
+			}
+		}, 10)
+	</script>
+</body>
+</html>

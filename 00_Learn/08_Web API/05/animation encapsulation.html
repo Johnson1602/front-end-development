@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animation Encapsulation</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		div {
+			position: absolute;
+			top: 30px;
+			left: 10px;
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+			text-align: center;
+			line-height: 100px;
+		}
+
+		span {
+			position: absolute;
+			top: 140px;
+			left: 10px;
+			width: 50px;
+			height: 50px;
+			background-color: #ccc;
+			text-align: center;
+			line-height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<button>MOVE!</button>
+	<div>DIV</div>
+	<span>SPAN</span>
+
+	<script>
+		var btn = document.querySelector('button');
+		var div = document.querySelector('div');
+		var span = document.querySelector('span');
+
+		function animate(obj, targetPosition) {
+			// 一上来就先清楚原先的定时器，防止多次添加定时器让动画速度变快
+			clearInterval(obj.timer);
+
+			// 直接给对象添加 timer 属性
+			// 一是节约内存空间，不用每次都声明一个新的变量 var timer
+			// 二是这样能更好的区分每个元素的 timer，而不是所有的元素的定时器都叫 timer
+			obj.timer = setInterval(function() {
+				var offsetLeft = obj.offsetLeft;
+				if (offsetLeft >= targetPosition) {
+					clearInterval(obj.timer);
+				} else {
+					obj.style.left = offsetLeft + 1 + 'px';
+				}
+			}, 10)
+		}
+
+		animate(div, 200);
+
+		btn.addEventListener('click', function() {
+			animate(span, 300);
+		})
+	</script>
+</body>
+</html>
