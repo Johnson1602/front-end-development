@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Feedback</title>
+	<script src="animate.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.slidebar {
+			position: fixed;
+			top: 50%;
+			right: 0;
+			width: 40px;
+			height: 40px;
+			margin-top: -20px;
+			background-color: pink;
+			line-height: 40px;
+			text-align: center;
+		}
+
+		.fixbar,
+		.popoutbar {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: pink;
+		}
+
+		.fixbar {
+			z-index: 999;
+			width: 40px;
+		}
+
+		.feedback {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			background-color: orange;
+		}
+	</style>
+</head>
+<body>
+	<div class="slidebar">
+		<div class="fixbar">
+			<span>&lt;</span>
+		</div>
+	
+		<div class="popoutbar">
+			<div class="feedback">Feedback</div>
+		</div>
+	</div>
+	
+	<script>
+		var slidebar = document.querySelector('.slidebar');
+		var span = document.querySelector('span');
+		var feedback = document.querySelector('.feedback');
+
+		slidebar.addEventListener('mouseover', function() {
+			span.innerHTML = '&gt;';
+			animate(feedback, -100);
+		})
+
+		slidebar.addEventListener('mouseout', function() {
+			span.innerHTML = '&lt;'
+			animate(feedback, 0);
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Animation Ease Out</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		div {
+			position: absolute;
+			top: 30px;
+			left: 10px;
+			width: 100px;
+			height: 100px;
+			background-color: #ccc;
+			text-align: center;
+			line-height: 100px;
+		}
+
+		span {
+			position: absolute;
+			top: 140px;
+			left: 10px;
+			width: 50px;
+			height: 50px;
+			background-color: #ccc;
+			text-align: center;
+			line-height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<button>MOVE! 300</button>
+	<button>MOVE! 800</button>
+	<div>DIV</div>
+	<span>SPAN</span>
+
+	<script>
+		var btn300 = document.querySelectorAll('button')[0];
+		// console.log(btn300);
+		var btn800 = document.querySelectorAll('button')[1];
+		var div = document.querySelector('div');
+		var span = document.querySelector('span');
+
+		function animate(obj, targetPosition) {
+			// 一上来就先清楚原先的定时器，防止多次添加定时器让动画速度变快
+			clearInterval(obj.timer);
+
+			// 直接给对象添加 timer 属性
+			// 一是节约内存空间，不用每次都声明一个新的变量 var timer
+			// 二是这样能更好的区分每个元素的 timer，而不是所有的元素的定时器都叫 timer
+			obj.timer = setInterval(function() {
+				// 把原先的固定步长改为变化步长来实现 ease out 效果
+				// step 计算公式：(目标位置 - 当前位置) / 10
+				var offsetLeft = obj.offsetLeft;
+				var step = (targetPosition - offsetLeft) / 10;
+				step = step > 0 ? Math.ceil(step) : Math.floor(step);
+				// 因为除10之后最后 step 会特别小，无法移动
+				// 这样就会一直在后台计算，一直无法停止计时器
+				// 方法 1 添加一个判断条件 < 0.5 就停止计时器，但是这样会导致到不了目标位置
+				// 所以使用方法 2，每次计算 step 的时候进行取整
+				if (offsetLeft == targetPosition) {
+					clearInterval(obj.timer);
+					console.log('stop!');
+				} else {
+					console.log(step);
+					// console.log(offsetLeft);
+					obj.style.left = offsetLeft + step + 'px';
+				}
+			}, 15)
+		}
+
+		animate(div, 200);
+
+		btn300.addEventListener('click', function() {
+			animate(span, 300);
+		})
+
+		btn800.addEventListener('click', function() {
+			animate(span, 800);
+		})
+	</script>
+</body>
+</html>
