@@ -12,6 +12,20 @@
 	float: left;
 	width: 721px;
 	height: 455px;
+	overflow: hidden;
+}
+
+/* 这里加绝对定位是为了实现动画效果 */
+/* 并且使用子代选择器是为了防止对指示灯 ul 的影响 */
+.focus>ul {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 500%;
+}
+
+.focus ul li {
+	float: left;
 }
 
 .focus ul li img {
@@ -22,12 +36,13 @@
 /* 轮播图翻页箭头 */
 .focus .prev,
 .focus .next {
+	display: none;
 	position: absolute;
 	top: 227px;
 	margin-top: -15px;
 	width: 30px;
 	height: 30px;
-	background: rgba(0, 0, 0, .3);
+	background: rgba(0, 0, 0, .2);
 	line-height: 30px;
 	text-align: center;
 	font-family: 'icomoon';
@@ -37,7 +52,8 @@
 
 .focus .prev:hover,
 .focus .next:hover {
-	color: #c81623;
+	background: rgba(0, 0, 0, .4);
+	/* color: #c81623; */
 }
 
 .focus .prev {
@@ -63,22 +79,22 @@
 /* 轮播图指示灯 */
 .nav-indicator {
 	position: absolute;
-	left: 360px;
+	left: 50%;
 	bottom: 15px;
-	margin-left: -50px;
-	width: 100px;
-	height: 16px;
+	padding: 3px 5px;
+	padding-right: 0;
 	background: rgba(0, 0, 0, .3);
-	border-radius: 8px;
+	border-radius: 9px;
 }
 
 .nav-indicator ul li {
 	float: left;
 	width: 12px;
 	height: 12px;
-	margin: 2px 4px 0;
+	margin-right: 5px;
 	background-color: rgba(255, 255, 255, .5);
 	border-radius: 50%;
+	cursor: pointer;
 }
 
 .nav-indicator .selected {

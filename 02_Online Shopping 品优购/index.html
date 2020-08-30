@@ -25,6 +25,10 @@
 	<link rel="stylesheet" href="css/common.css">
 	<!-- 首页独立样式文件 -->
 	<link rel="stylesheet" href="css/index.css">
+	<!-- 先引入 animate.js 文件，因为 index.js 需要引用 -->
+	<script src="js/animate.js"></script>
+	<!-- 首页 js 文件 -->
+	<script src="js/index.js"></script>
 </head>
 
 <body>
@@ -158,16 +162,23 @@
 					<li>
 						<img src="upload/focus-01.png" alt="brands">
 					</li>
+					<li>
+						<img src="upload/focus-02.jpg" alt="brands">
+					</li>
+					<li>
+						<img src="upload/focus-03.jpg" alt="brands">
+					</li>
+					<li>
+						<img src="upload/focus-04.jpg" alt="brands">
+					</li>
 				</ul>
-				<a href="#" class="prev"></a>
-				<a href="#" class="next"></a>
+				<!-- 上一张 -->
+				<a href="javascript:;" class="prev"></a>
+				<!-- 下一张 -->
+				<a href="javascript:;" class="next"></a>
+				<!-- 下面的指示灯，指示当前是到那一张了 -->
 				<div class="nav-indicator">
 					<ul>
-						<li></li>
-						<li></li>
-						<li class="selected"></li>
-						<li></li>
-						<li></li>
 					</ul>
 				</div>
 			</div>
