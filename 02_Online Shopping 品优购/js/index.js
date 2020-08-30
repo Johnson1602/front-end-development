@@ -37,6 +37,10 @@ window.addEventListener('load', function () {
 				indicator.children[i].className = '';
 			}
 			this.className = 'selected';
+			currentIndicatorIndex = this.getAttribute('index');
+			currentImageIndex = this.getAttribute('index');
+			// console.log('image: ' + currentImageIndex);
+			// console.log('indicator: ' + currentIndicatorIndex);
 
 			// 3.2 同时根据被点击的 li 来显示对应的焦点图（动画）
 			// 移动距离计算公式：-单张图片大小 * 指示灯 index
@@ -57,15 +61,30 @@ window.addEventListener('load', function () {
 
 	// 4.2 引入计数器，开始注册事件
 	var currentImageIndex = 0;
-	// console.log(currentImageIndex);
+	// console.log('image: ' + currentImageIndex);
+	var currentIndicatorIndex = 0;
+	// console.log('indicator: ' + currentIndicatorIndex);
+
 	nextArrow.addEventListener('click', function () {
 		if (currentImageIndex == images.children.length - 1) {
 			images.style.left = 0;
 			currentImageIndex = 0;
 		}
 		currentImageIndex++;
-		// console.log(currentImageIndex);
 		animate(images, -imageWidth * currentImageIndex);
+
+		// 4.3 让指示灯跟随图片一起切换
+		currentIndicatorIndex++;
+		if (currentIndicatorIndex == indicator.children.length) {
+			currentIndicatorIndex = 0;
+		}
+		for (var i = 0; i < indicator.children.length; i++) {
+			indicator.children[i].className = '';
+		}
+		indicator.children[currentIndicatorIndex].className = 'selected';
+
+		// console.log('image: ' + currentImageIndex);
+		// console.log('indicator: ' + currentIndicatorIndex);
 	})
 
 	prevArrow.addEventListener('click', function () {
@@ -74,7 +93,19 @@ window.addEventListener('load', function () {
 			currentImageIndex = 4;
 		}
 		currentImageIndex--;
-		// console.log(currentImageIndex);
 		animate(images, -imageWidth * currentImageIndex);
+
+		// 4.3 让指示灯跟随图片一起切换
+		currentIndicatorIndex--;
+		if (currentIndicatorIndex == -1) {
+			currentIndicatorIndex = 3;
+		}
+		for (var i = 0; i < indicator.children.length; i++) {
+			indicator.children[i].className = '';
+		}
+		indicator.children[currentIndicatorIndex].className = 'selected';
+
+		// console.log('image: ' + currentImageIndex);
+		// console.log('indicator: ' + currentIndicatorIndex);
 	})
 })
