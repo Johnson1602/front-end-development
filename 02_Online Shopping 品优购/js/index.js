@@ -10,11 +10,18 @@ window.addEventListener('load', function () {
 	focusArea.addEventListener('mouseenter', function () {
 		prevArrow.style.display = 'block';
 		nextArrow.style.display = 'block';
+		// 5.2 鼠标经过时就停止自动播放
+		clearInterval(autoPlay);
+		autoPlay = null;
 	})
 
 	focusArea.addEventListener('mouseleave', function () {
 		prevArrow.style.display = 'none';
 		nextArrow.style.display = 'none';
+		// 5.3 鼠标离开时再打开自动播放
+		autoPlay = setInterval(function () {
+			nextArrow.click();
+		}, 5000)
 	})
 
 	// 2. 动态创建轮播图指示灯
@@ -37,6 +44,7 @@ window.addEventListener('load', function () {
 				indicator.children[i].className = '';
 			}
 			this.className = 'selected';
+			// 这里点击时一定要同时更新两个计数器，不然会出问题
 			currentIndicatorIndex = this.getAttribute('index');
 			currentImageIndex = this.getAttribute('index');
 			// console.log('image: ' + currentImageIndex);
@@ -65,6 +73,14 @@ window.addEventListener('load', function () {
 	var currentIndicatorIndex = 0;
 	// console.log('indicator: ' + currentIndicatorIndex);
 
+	// 调整指示灯的样式
+	function updateIndicator() {
+		for (var i = 0; i < indicator.children.length; i++) {
+			indicator.children[i].className = '';
+		}
+		indicator.children[currentIndicatorIndex].className = 'selected';
+	}
+
 	nextArrow.addEventListener('click', function () {
 		if (currentImageIndex == images.children.length - 1) {
 			images.style.left = 0;
@@ -78,10 +94,7 @@ window.addEventListener('load', function () {
 		if (currentIndicatorIndex == indicator.children.length) {
 			currentIndicatorIndex = 0;
 		}
-		for (var i = 0; i < indicator.children.length; i++) {
-			indicator.children[i].className = '';
-		}
-		indicator.children[currentIndicatorIndex].className = 'selected';
+		updateIndicator();
 
 		// console.log('image: ' + currentImageIndex);
 		// console.log('indicator: ' + currentIndicatorIndex);
@@ -89,8 +102,9 @@ window.addEventListener('load', function () {
 
 	prevArrow.addEventListener('click', function () {
 		if (currentImageIndex == 0) {
-			images.style.left = -(images.children.length - 1) * imageWidth + 'px';
-			currentImageIndex = 4;
+			currentImageIndex = images.children.length - 1;
+			images.style.left = -currentImageIndex * imageWidth + 'px';
+			
 		}
 		currentImageIndex--;
 		animate(images, -imageWidth * currentImageIndex);
@@ -100,12 +114,15 @@ window.addEventListener('load', function () {
 		if (currentIndicatorIndex == -1) {
 			currentIndicatorIndex = 3;
 		}
-		for (var i = 0; i < indicator.children.length; i++) {
-			indicator.children[i].className = '';
-		}
-		indicator.children[currentIndicatorIndex].className = 'selected';
+		updateIndicator();
 
 		// console.log('image: ' + currentImageIndex);
 		// console.log('indicator: ' + currentIndicatorIndex);
 	})
+
+	// 5. 设置轮播图自动播放
+	var autoPlay = setInterval(function () {
+		// 模拟鼠标点击 next 按钮
+		nextArrow.click();
+	}, 5000)
 })
