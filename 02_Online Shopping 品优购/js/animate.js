@@ -14,9 +14,11 @@ function animate(obj, targetPosition, callback) {
 		step = step > 0 ? Math.ceil(step) : Math.floor(step);
 		if (offsetLeft == targetPosition) {
 			clearInterval(obj.timer);
-			if (callback) {
-				callback();
-			}
+			// if (callback) {
+			// 	callback();
+			// }
+			// 利用短路性质执行回调函数
+			callback && callback();
 		} else {
 			obj.style.left = offsetLeft + step + 'px';
 		}

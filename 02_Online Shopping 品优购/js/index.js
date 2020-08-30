@@ -72,6 +72,8 @@ window.addEventListener('load', function () {
 	// console.log('image: ' + currentImageIndex);
 	var currentIndicatorIndex = 0;
 	// console.log('indicator: ' + currentIndicatorIndex);
+	// 添加节流阀，防止用户点击过快
+	var flag = true;
 
 	// 调整指示灯的样式
 	function updateIndicator() {
@@ -82,42 +84,53 @@ window.addEventListener('load', function () {
 	}
 
 	nextArrow.addEventListener('click', function () {
-		if (currentImageIndex == images.children.length - 1) {
-			images.style.left = 0;
-			currentImageIndex = 0;
+		if (flag) {
+			flag = false;
+			if (currentImageIndex == images.children.length - 1) {
+				images.style.left = 0;
+				currentImageIndex = 0;
+			}
+			currentImageIndex++;
+			// 利用回调函数，当动画执行完毕后才允许再次点击按钮
+			animate(images, -imageWidth * currentImageIndex, function () {
+				flag = true;
+			});
+	
+			// 4.3 让指示灯跟随图片一起切换
+			currentIndicatorIndex++;
+			if (currentIndicatorIndex == indicator.children.length) {
+				currentIndicatorIndex = 0;
+			}
+			updateIndicator();
+	
+			// console.log('image: ' + currentImageIndex);
+			// console.log('indicator: ' + currentIndicatorIndex);
 		}
-		currentImageIndex++;
-		animate(images, -imageWidth * currentImageIndex);
-
-		// 4.3 让指示灯跟随图片一起切换
-		currentIndicatorIndex++;
-		if (currentIndicatorIndex == indicator.children.length) {
-			currentIndicatorIndex = 0;
-		}
-		updateIndicator();
-
-		// console.log('image: ' + currentImageIndex);
-		// console.log('indicator: ' + currentIndicatorIndex);
 	})
 
 	prevArrow.addEventListener('click', function () {
-		if (currentImageIndex == 0) {
-			currentImageIndex = images.children.length - 1;
-			images.style.left = -currentImageIndex * imageWidth + 'px';
-			
+		if (flag) {
+			flag = false;
+			if (currentImageIndex == 0) {
+				currentImageIndex = images.children.length - 1;
+				images.style.left = -currentImageIndex * imageWidth + 'px';
+				
+			}
+			currentImageIndex--;
+			animate(images, -imageWidth * currentImageIndex, function () {
+				flag = true;
+			});
+	
+			// 4.3 让指示灯跟随图片一起切换
+			currentIndicatorIndex--;
+			if (currentIndicatorIndex == -1) {
+				currentIndicatorIndex = 3;
+			}
+			updateIndicator();
+	
+			// console.log('image: ' + currentImageIndex);
+			// console.log('indicator: ' + currentIndicatorIndex);
 		}
-		currentImageIndex--;
-		animate(images, -imageWidth * currentImageIndex);
-
-		// 4.3 让指示灯跟随图片一起切换
-		currentIndicatorIndex--;
-		if (currentIndicatorIndex == -1) {
-			currentIndicatorIndex = 3;
-		}
-		updateIndicator();
-
-		// console.log('image: ' + currentImageIndex);
-		// console.log('indicator: ' + currentIndicatorIndex);
 	})
 
 	// 5. 设置轮播图自动播放
