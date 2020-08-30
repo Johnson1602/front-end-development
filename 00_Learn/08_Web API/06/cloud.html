@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cloud</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		a {
+			text-decoration: none;
+			color: #333;
+		}
+
+		.nav {
+			position: relative;
+			width: 800px;
+			height: 26px;
+			margin: 100px auto;
+			padding: 3px;
+			background-color: #eee;
+			border-radius: 5px;
+		}
+
+		.cloud {
+			position: absolute;
+			height: 26px;
+			background: rgba(0, 0, 0, .5);
+			border-radius: 5px;
+		}
+
+		.nav ul {
+			position: absolute;
+		}
+
+		.nav ul li {
+			float: left;
+		}
+
+		.nav ul li a {
+			display: block;
+			padding: 0 15px;
+			height: 26px;
+			line-height: 26px;
+		}
+	</style>
+
+	<!-- <script src="animate.js"></script> -->
+	<script>
+		window.addEventListener('load', function () {
+			var cloud = document.querySelector('.cloud');
+			var nav = document.querySelector('.nav');
+			var ul = nav.querySelector('ul');
+			// console.log(ul);
+			var lis = nav.querySelectorAll('li');
+
+			cloud.style.width = lis[0].clientWidth + 'px';
+
+			var currentPosition = cloud.offsetLeft;
+			var currentWidth = lis[0].clientWidth;
+
+			var flag = true;
+			// for (var i = 0; i < lis.length; i++) {
+			// 	lis[i].addEventListener('mouseenter', function () {
+			// 		// if (flag) {
+			// 			// flag = false;
+			// 			// console.log('enter!');
+			// 			// offsetLeft 表示的是DOM对象在“该DOM对象的层级关系中离该对象最近的，设置了position的父对象”中的位置
+			// 			// 所以是每个 li 相对于 ul 的位置
+			// 			// 又由于 ul 的父盒子 div 设置了 padding，所以要再加上这个 padding 值
+			// 			// 才是真正应该移动到的位置
+			// 			// cloud.style.width = this.clientWidth + 'px';
+			// 			animate(cloud, this.offsetLeft + 3, this.clientWidth, function () {
+			// 				flag = true;
+			// 			});
+			// 		// }
+			// 	})
+
+			// 	lis[i].addEventListener('click', function () {
+			// 		currentPosition = this.offsetLeft + 3;
+			// 		currentWidth = this.clientWidth + 'px';
+			// 	})
+
+			// 	lis[i].addEventListener('mouseleave', function () {
+			// 		// if (flag) {
+			// 			// flag = false;
+			// 			// console.log('leave!');
+			// 			// cloud.style.width = currentWidth;
+			// 			animate(cloud, currentPosition, currentWidth, function () {
+			// 				flag = true;
+			// 			});
+			// 		// }
+
+			// 	})
+			// }
+
+			ul.addEventListener('mouseover', function (e) {
+				if (flag) {
+					flag = false;
+					// console.log('mouseover');
+					// console.log(e);
+					var target = e.target.parentNode;
+					// console.log(target);
+					animate(cloud, target.offsetLeft + 3, target.clientWidth, function () {
+						flag = true;
+					});
+				}
+
+			})
+
+			ul.addEventListener('mouseleave', function () {
+				if (flag) {
+					flag = false;
+					// console.log('mouseout');
+					animate(cloud, currentPosition, currentWidth,function() {
+						flag = true;
+					});
+				}
+			})
+
+			ul.addEventListener('click', function(e) {
+				var target = e.target.parentNode;
+				currentPosition = target.offsetLeft + 3;
+				currentWidth = target.clientWidth;
+			})
+
+			function animate(obj, targetPosition, targetWidth, callback) {
+				// 一上来就先清楚原先的定时器，防止多次添加定时器让动画速度变快
+				clearInterval(obj.timer);
+
+				// 直接给对象添加 timer 属性
+				// 一是节约内存空间，不用每次都声明一个新的变量 var timer
+				// 二是这样能更好的区分每个元素的 timer，而不是所有的元素的定时器都叫 timer
+				obj.timer = setInterval(function () {
+					// 把原先的固定步长改为变化步长来实现 ease out 效果
+					// step 计算公式：(目标位置 - 当前位置) / 10
+					var offsetLeft = obj.offsetLeft;
+					var step = (targetPosition - offsetLeft) / 10;
+					// 通过取整来防止数值过小无法移动导致函数无限运行
+					step = step > 0 ? Math.ceil(step) : Math.floor(step);
+					if (offsetLeft == targetPosition) {
+						clearInterval(obj.timer);
+					} else {
+						obj.style.left = offsetLeft + step + 'px';
+					}
+				}, 15)
+
+				var count = 0;
+				obj.timerWidth = setInterval(function () {
+					// console.log(count++);
+					var width = parseInt(cloud.style.width);
+					var stepWidth = (targetWidth - width) / 10;
+					// 通过取整来防止数值过小无法移动导致函数无限运行
+					stepWidth = stepWidth > 0 ? Math.ceil(stepWidth) : Math.floor(stepWidth);
+
+					if (width == targetWidth) {
+						// console.log('stop!');
+						clearInterval(obj.timerWidth);
+						obj.timerWidth = null;
+						if (callback) {
+							callback();
+						}
+					} else {
+						// console.log('update width!');
+						cloud.style.width = width + stepWidth + 'px';
+						// console.log('current width: ' + cloud.style.width);
+
+					}
+					// console.log('target width: ' + targetWidth);
+					// console.log('step width: ' + stepWidth);
+					// console.log('current width: ' + cloud.style.width);
+				}, 1)
+			}
+		})
+	</script>
+</head>
+
+<body>
+	<div class="nav">
+		<span class="cloud"></span>
+		<ul>
+			<li><a href="javascript:;">1</a></li>
+			<li><a href="javascript:;">2</a></li>
+			<li><a href="javascript:;">3</a></li>
+			<li><a href="javascript:;">4</a></li>
+			<li><a href="javascript:;">5</a></li>
+			<li><a href="javascript:;">666</a></li>
+			<li><a href="javascript:;">7</a></li>
+			<li><a href="javascript:;">8</a></li>
+			<li><a href="javascript:;">9</a></li>
+			<li><a href="javascript:;">10</a></li>
+		</ul>
+	</div>
+</body>
+
+</html>
