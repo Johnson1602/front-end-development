@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Clothes</title>
+	<style>
+		/* 50*25, 200*250,  */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		a {
+			text-decoration: none;
+			color: #333333;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		.clothes {
+			width: 249px;
+			height: 250px;
+			margin: 100px auto;
+			border: 1px solid pink;
+		}
+
+		.nav {
+			float: left;
+			width: 48px;
+			height: 250px;
+			background-color: rgba(255, 192, 203, 0.295);
+			border-right: 1px solid pink;
+		}
+
+		.nav-items {
+			height: 24px;
+			border-bottom: 1px solid pink;
+			line-height: 24px;
+			text-align: center;
+		}
+
+		.nav-items a {
+			display: block;
+		}
+
+		.pics {
+			float: left;
+		}
+
+		.pics div {
+			display: none;
+		}
+	</style>
+	<script src="../jquery-3.5.1.min.js"></script>
+	<script>
+		$(function() {
+			// 鼠标经过每个 li 时，显示对应的图片
+			$('.nav-items').mouseover(function() {
+				// 拿到经过的是第几个 li
+				var index = $(this).index();
+				// 让其对应的图片显示
+				$(".pics div").eq(index).show();
+				// 让其他图片隐藏
+				$(".pics div").eq(index).siblings().hide();	// siblings() 不传参数就选择所有兄弟节点
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class="clothes">
+		<div class="nav">
+			<ul>
+				<li class="nav-items">
+					<a href="javascript:;">01</a>
+				</li class="nav-items">
+				<li class="nav-items">
+					<a href="javascript:;">02</a>
+				</li class="nav-items">
+				<li class="nav-items">
+					<a href="javascript:;">03</a>
+				</li class="nav-items">
+				<li class="nav-items">
+					<a href="javascript:;">04</a>
+				</li class="nav-items">
+				<li class="nav-items">
+					<a href="javascript:;">05</a>
+				</li class="nav-items">
+			</ul>
+		</div>
+
+		<div class="pics">
+			<div style="display: block;">
+				<a href="javascript:;"><img src="images/clothes-01.jpg" alt="01"></a>
+			</div>
+			<div>
+				<a href="javascript:;"><img src="images/clothes-02.jpg" alt="01"></a>
+			</div>
+			<div>
+				<a href="javascript:;"><img src="images/clothes-03.jpg" alt="01"></a>
+			</div>
+			<div>
+				<a href="javascript:;"><img src="images/clothes-04.jpg" alt="01"></a>
+			</div>
+			<div>
+				<a href="javascript:;"><img src="images/clothes-05.jpg" alt="01"></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

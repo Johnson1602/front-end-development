@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Highlight</title>
+	<style>
+		/* 200*186 */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background-color: black;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		div {
+			width: 630px;
+			height: 382px;
+			border: 1px solid #ffffff;
+			padding: 10px;
+			padding-right: 0;
+			margin: 100px auto;
+		}
+
+		div ul li {
+			float: left;
+			width: 200px;
+			height: 186px;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			opacity: .5;
+		}
+	</style>
+
+	<script src="../jquery-3.5.1.min.js"></script>
+	<script>
+		$(function() {
+			$('li').hover(function() {
+				$(this).stop().fadeTo(400, 1);
+			}, function() {
+				$(this).stop().fadeTo(400, .5);
+			})
+		})
+	</script>
+</head>
+<body>
+	<div>
+		<ul>
+			<li><img src="images/highlight.jpg" alt="highlight"></li>
+			<li><img src="images/highlight.jpg" alt="highlight"></li>
+			<li><img src="images/highlight.jpg" alt="highlight"></li>
+			<li><img src="images/highlight.jpg" alt="highlight"></li>
+			<li><img src="images/highlight.jpg" alt="highlight"></li>
+			<li><img src="images/highlight.jpg" alt="highlight"></li>
+		</ul>
+	</div>
+</body>
+</html>

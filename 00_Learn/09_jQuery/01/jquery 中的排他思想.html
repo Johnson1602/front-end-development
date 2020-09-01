@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JQuery 中的排他思想</title>
+	<script src="../jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+	<button>按钮</button>
+
+	<script>
+		$(function() {
+			// 给 button 添加点击事件
+			$('button').click(function() {
+				// 1. 修改自己的背景颜色
+				$(this).css('background', 'pink');
+				// 2. 把其他的背景颜色清空
+				$(this).siblings("button").css("background", "");
+			})
+		})
+	</script>
+</body>
+</html>
