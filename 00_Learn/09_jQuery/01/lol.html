@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,19 +60,30 @@
 	</style>
 	<script src="../jquery-3.5.1.min.js"></script>
 	<script>
-		$(function() {
-			$(".hero").hover(function() {
+		$(function () {
+			// $(".hero").hover(function() {
+			// 	$(this).stop().animate({
+			// 		width: 224
+			// 	}).find(".small").stop().fadeOut().siblings(".big").stop().fadeIn();
+			// }, function() {
+			// 	$(this).stop().animate({
+			// 		width: 69
+			// 	}).find(".big").stop().fadeOut().siblings(".small").stop().fadeIn();
+			// })
+
+			$(".hero").mouseenter(function () {
 				$(this).stop().animate({
 					width: 224
 				}).find(".small").stop().fadeOut().siblings(".big").stop().fadeIn();
-			}, function() {
-				$(this).stop().animate({
+			
+				$(this).siblings(".hero").stop().animate({
 					width: 69
 				}).find(".big").stop().fadeOut().siblings(".small").stop().fadeIn();
 			})
 		})
 	</script>
 </head>
+
 <body>
 	<div class="lol">
 		<ul>
@@ -120,4 +132,5 @@
 		</ul>
 	</div>
 </body>
+
 </html>
