@@ -360,6 +360,33 @@
 }
 
 /* 楼层 */
+/* 楼层电梯 */
+.floor-guide {
+	position: fixed;
+	top: 350px;
+	left: 50%;
+	width: 66px;
+	margin-left: -677px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.floor-guide ul li{
+	height: 30px;
+	border-bottom: 1px solid #ededed;
+	cursor: pointer;
+}
+
+.floor-guide ul li:hover {
+	background-color: #c81623;
+	color: #ffffff;
+}
+
+.floor-guide .selected {
+	background-color: #c81623;
+	color: #ffffff;
+}
+
 /* 一楼 家用电器 */
 .floor .w {
 	height: 477px;
