@@ -168,3 +168,51 @@
 	text-align: center;
 	line-height: 50px;
 }
+
+/* 底部页面跳转 */
+.page {
+	margin: 50px 0;
+	text-align: center;
+}
+
+.page-number {
+	margin-right: 10px;
+}
+
+.page-number a {
+	display: inline-block;
+	width: 36px;
+	height: 36px;
+	border: 1px solid #cccccc;
+	background-color: #f7f7f7;
+	line-height: 34px;
+}
+
+.page-number .prev,
+.page-number .next {
+	width: 88px;
+}
+
+.page-number .selected,
+.page-number .more {
+	border-color: transparent;
+	background-color: transparent;
+}
+
+.page-jump input {
+	width: 36px;
+	height: 36px;
+	margin: 0 5px;
+	border: 1px solid #cccccc;
+	text-align: center;
+}
+
+.page-jump button {
+	width: 54px;
+	height: 36px;
+	margin-left: 10px;
+	border: 1px solid #cccccc;
+	background-color: #f7f7f7;
+}
+
+
