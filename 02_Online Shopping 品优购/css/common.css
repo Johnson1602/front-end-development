@@ -172,9 +172,10 @@ input[type="search"]::-webkit-search-decoration {
 
 /* 左侧下拉菜单 */
 .nav .w .dropdown {
+	position: relative;
 	float: left;
 	width: 209px;
-	height: 45px;
+	/* height: 45px; */
 	background-color: #b1191a;
 }
 
@@ -192,6 +193,10 @@ input[type="search"]::-webkit-search-decoration {
 /* 商品分类下拉菜单 */
 .dropdown .dd {
 	/* display: none; */
+	position: absolute;
+	top: 47px;
+	left: 0;
+	width: 209px;
 	background-color: #c81623;
 }
 
