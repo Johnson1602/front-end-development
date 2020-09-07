@@ -296,3 +296,88 @@
 	text-align: center;
 	line-height: 46px;
 }
+
+.product-detail {
+	margin-top: 30px;
+}
+
+.product-detail .aside {
+	float: left;
+	width: 210px;
+	border: 1px solid #dddddd;
+}
+
+.product-detail .aside .tab-list ul li {
+	float: left;
+	width: 104px;
+	height: 34px;
+	border-bottom: 1px solid #dddddd;
+	background-color: #f1f1f1;
+	text-align: center;
+	line-height: 33px;
+}
+
+.product-detail .aside .tab-list ul li:last-child {
+	border-left: 1px solid #dddddd;
+}
+
+.product-detail .aside .tab-list ul li.selected {
+	background-color: #fff;
+	border-bottom-color: transparent;
+	color: #c81623;
+}
+
+.product-detail .aside .tab-con .rel {
+	width: 184px;
+	height: 145px;
+	margin: 0 auto;
+}
+
+.product-detail .aside .tab-con .rel li {
+	float: left;
+}
+
+.product-detail .aside .tab-con .rel li a {
+	display: block;
+	width: 92px;
+	height: 29px;
+	padding-left: 5px;
+	border-bottom: 1px dashed #ededed;
+	line-height: 29px;
+}
+
+.product-detail .aside .tab-con p {
+	margin-top: 20px;
+	margin-left: 10px;
+	font-size: 14px;
+}
+
+.tab-con .recom {
+	margin-top: 10px;
+	padding: 0 10px;
+}
+
+.tab-con .recom li {
+	border-top: 1px solid #ccc;
+}
+.tab-con .recom li h5 {
+	/*超出的文字省略号显示*/
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: 400;
+}
+.aside-price {
+	font-weight: 700;
+	margin: 10px 0;
+}
+.as-addcar {
+	display: block;
+	width: 88px;
+	height: 26px;
+	border: 1px solid #ccc;
+	background-color: #f7f7f7;
+	margin: 10px auto;
+	text-align: center;
+	line-height: 26px;
+}
