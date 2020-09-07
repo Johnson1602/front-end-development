@@ -381,3 +381,37 @@
 	text-align: center;
 	line-height: 26px;
 }
+
+.detail {
+	float: right;
+	width: 978px;
+}
+.detail-tab-list {
+	height: 41px;
+	border: 1px solid #ccc;
+	background-color: #f1f1f1;
+}
+.detail-tab-list li {
+	float: left;
+	height: 39px;
+	line-height: 39px;
+	padding: 0 20px;
+	text-align: center;
+	cursor: pointer;
+}
+.detail-tab-list .selected {
+	background-color: #c81623;
+	color: #fff;
+}
+.item-info {
+	padding: 20px 0 0 20px;
+}
+.item-info li {
+	line-height: 22px;
+}
+.more {
+	float: right;
+	margin-bottom: 10px;
+	font-weight: 700;
+	font-family: 'icomoon';
+}
