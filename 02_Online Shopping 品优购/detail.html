@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,22 +25,23 @@
 	<!-- 首页独立样式文件 -->
 	<link rel="stylesheet" href="css/detail.css">
 	<script>
-		window.addEventListener('load', function() {
+		window.addEventListener('load', function () {
 			console.log('Load!');
 			var dropdown = document.querySelector('.dropdown');
 			var dropdownContent = document.querySelector('.dropdown').querySelector('.dd');
 
-			dropdown.addEventListener('mouseover', function() {
+			dropdown.addEventListener('mouseover', function () {
 				dropdownContent.style.display = 'block';
 			})
-			dropdown.addEventListener('mouseout', function() {
+			dropdown.addEventListener('mouseout', function () {
 				dropdownContent.style.display = 'none';
 			})
 		})
 	</script>
 </head>
+
 <body>
-		<!-- 顶部快捷导航栏 -->
+	<!-- 顶部快捷导航栏 -->
 	<!-- 外层是一个通栏的大盒子 -->
 	<section class="shortcut">
 		<!-- 里面装着一个版心盒子 -->
@@ -162,11 +164,134 @@
 
 	<!-- 商品详情 -->
 	<div class="detail-container w">
-		123
+		<!-- 顶部面包屑导航 -->
+		<div class="crumb-wrap">
+			<a href="#" class="top">手机、数码、通讯</a>
+			〉<a href="#">手机</a>
+			〉<a href="#">Apple苹果</a>
+			〉<a href="#">iphone 6s</a>
+		</div>
+
+		<!-- 商品图片 & 添加购物车模块 -->
+		<div class="product-intro clearfix">
+			<!-- 左侧商品图片 -->
+			<div class="product-wrapper">
+				<!-- 上面产品大图 -->
+				<div class="big">
+					<img src="upload/iPhone 6s.png" alt="iPhone 6s">
+				</div>
+
+				<!-- 中间产品小图们 -->
+				<div class="thumbnail">
+					<!-- 左右箭头 -->
+					<a href="javascript:;" class="arrow-prev"></a>
+					<a href="javascript:;" class="arrow-next"></a>
+
+					<!-- 中间小图 -->
+					<ul>
+						<li class="selected"><img src="upload/thumbnail-01.jpg" alt="thumbnail-01"></li>
+						<li><img src="upload/thumbnail-01.jpg" alt="thumbnail-01"></li>
+						<li><img src="upload/thumbnail-01.jpg" alt="thumbnail-01"></li>
+						<li><img src="upload/thumbnail-01.jpg" alt="thumbnail-01"></li>
+						<li><img src="upload/thumbnail-01.jpg" alt="thumbnail-01"></li>
+					</ul>
+				</div>
+
+				<!-- 下面 分享 & 关注 等 -->
+				<div class="function">
+					<span>商品编号：0468256644</span>
+					<span class="share">分享</span>
+					<span class="fav">关注</span>
+					<input type="checkbox" name="compare" id="compare"><label for="compare">对比</label>
+				</div>
+			</div>
+
+			<!-- 右侧商品信息 & 添加购物车 -->
+			<div class="item-info-wrapper">
+				<h4>Apple iPhone 6s（A1700）64G 深空灰色 移动通信电信4G手机</h4>
+				<p>推荐选择下方[移动优惠购],手机套餐齐搞定,不用换号,每月还有花费返</p>
+
+				<!-- 以下部分都按照 dl-dt-dd 的结构来布局 -->
+				<dl class="summary-price">
+					<dt>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格</dt>
+					<dd class="price">¥ <span>5299.00</span><a href="#"> 降价通知</a></dd>
+					<dd class="reviews">累计评价 <span>612188</span></dd>
+				</dl>
+
+				<dl class="summary-discount">
+					<dt>促&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销</dt>
+					<dd><span>加价购</span>满999.00另加20.00元，或满1999.00另加30.00元，或满2999.00另加40.00元，即可在购物车换购热销商品 <a href="#">详情
+							》</a></dd>
+				</dl>
+
+				<dl class="summary-support">
+					<dt>支&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持</dt>
+					<dd>以旧换新，闲置手机回收 4G套餐超值抢 礼品购</dd>
+				</dl>
+
+				<dl class="summary-delivery">
+					<dt>配&nbsp;&nbsp;送&nbsp;&nbsp;至</dt>
+					<dd>北京海淀区中关 有货 支持 99元免运费 |货到付款 |211限时达<br>
+						由自营发货，并提供售后服务。11:00前完成下单，预计 <span>今天（08月10日）送达</span> </dd>
+				</dl>
+
+				<div class="choose">
+					<dl class="choose-color">
+						<dt>选择颜色</dt>
+						<dd>
+							<a href="javascript:;" class="selected">玫瑰金</a>
+							<a href="javascript:;">金色</a>
+							<a href="javascript:;">白色</a>
+							<a href="javascript:;">深空灰</a>
+						</dd>
+					</dl>
+					<dl class="choose-version">
+						<dt>选择版本</dt>
+						<dd>
+							<a href="javascript:;" class="selected">公开版</a>
+							<a href="javascript:;">移动4G</a>
+						</dd>
+					</dl>
+					<dl class="choose-storage">
+						<dt>选择容量</dt>
+						<dd>
+							<a href="javascript:;">16GB</a>
+							<a href="javascript:;" class="selected">64GB</a>
+							<a href="javascript:;">128GB</a>
+						</dd>
+					</dl>
+					<dl class="choose-type">
+						<dt>购买方式</dt>
+						<dd>
+							<a href="javascript:;" class="selected">官方标配</a>
+							<a href="javascript:;">移动优惠购</a>
+							<a href="javascript:;">电信优惠购</a>
+						</dd>
+					</dl>
+					<dl class="choose-kit">
+						<dt>套&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;装</dt>
+						<dd>
+							<a href="javascript:;">保护套装</a>
+							<a href="javascript:;">充电套装</a>
+						</dd>
+					</dl>
+				</div>
+
+				<!-- 加入购物车 -->
+				<div class="cart">
+					<div class="number">
+						<input type="text" value="1">
+						<a href="javascript:;" class="add">+</a>
+						<a href="javascript:;" class="reduce">-</a>
+					</div>
+
+					<a href="#">加入购物车</a>
+				</div>
+			</div>
+		</div>
 	</div>
 
-
-		<!-- Footer -->
+	<!-- Footer -->
 	<!-- 外面一个通栏 -->
 	<footer class="footer">
 		<!-- 里面一个版心 -->
@@ -297,4 +422,5 @@
 		</div>
 	</footer>
 </body>
+
 </html>

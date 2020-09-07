@@ -1,0 +1,298 @@
+.detail-container {
+	margin-top: 20px;
+}
+
+/* 顶部面包屑导航 */
+.crumb-wrap a {
+	margin: 0 10px;
+}
+
+.crumb-wrap .top {
+	/* font-weight: 700; */
+	margin-left: 0;
+	color: #333333;
+}
+
+.crumb-wrap .top:hover {
+	color: #c81623;
+}
+
+/* 商品图片 & 添加购物车模块 */
+/* 左侧商品图片 */
+.product-wrapper {
+	float: left;
+	width: 400px;
+	height: 560px;
+	margin-top: 10px;
+	/* background-color: pink; */
+}
+
+/* 上面产品大图 */
+.product-wrapper .big {
+	height: 400px;
+	padding-top: 33px;
+	margin-bottom: 64px;
+	border: 1px solid #ededed;
+	text-align: center;
+}
+
+/* 中间产品小图们 */
+.product-wrapper .thumbnail {
+	position: relative;
+	height: 58px;
+	margin-bottom: 20px;
+}
+
+/* 左右箭头 */
+.product-wrapper .thumbnail .arrow-prev,
+.product-wrapper .thumbnail .arrow-next {
+	position: absolute;
+	top: 12px;
+	width: 22px;
+	height: 32px;
+}
+
+.product-wrapper .thumbnail .arrow-prev {
+	left: 0;
+	background: url(../images/arrow-prev.png);
+}
+
+.product-wrapper .thumbnail .arrow-next {
+	right: 0;
+	background: url(../images/arrow-next.png);
+}
+
+/* 中间小图 */
+.product-wrapper .thumbnail ul {
+	width: 290px;
+	height: 58px;
+	margin: 0 auto;
+}
+
+.product-wrapper .thumbnail ul li {
+	float: left;
+	width: 58px;
+	border: 1px solid transparent;
+}
+
+.product-wrapper .thumbnail ul li.selected {
+	border-color: #c81623;
+}
+
+/* 下面 分享 & 关注 等 */
+.product-wrapper .function span {
+	margin-right: 35px;
+}
+
+.product-wrapper .function .share,
+.product-wrapper .function .fav {
+	padding-left: 15px;
+	cursor: pointer;
+}
+
+.product-wrapper .function .share {
+	background: url(../images/share.png) no-repeat left center;
+}
+
+.product-wrapper .function .fav {
+	background: url(../images/fav.png) no-repeat left center;
+}
+
+.product-wrapper .function #compare {
+	vertical-align: middle;
+	margin-right: 6px;
+}
+
+.product-wrapper .function label {
+	cursor: pointer;
+}
+
+/* 右侧商品信息 & 添加购物车 */
+.item-info-wrapper {
+	float: right;
+	width: 718px;
+}
+
+.item-info-wrapper h4 {
+	margin-bottom: 10px;
+	font-size: 16px;
+	/* font-weight: 400; */
+	color: #333333;
+}
+
+.item-info-wrapper p {
+	margin-bottom: 10px;
+	color: #e12228;
+}
+
+.item-info-wrapper dt,
+.item-info-wrapper dd {
+	display: inline-block;
+}
+
+.item-info-wrapper dt {
+	width: 70px;
+	padding-left: 9px;
+	color: #666666;
+}
+
+.item-info-wrapper dd {
+	color: #999999;
+}
+
+.summary-price {
+	position: relative;
+	height: 40px;
+	line-height: 40px;
+	background-color: #fee9eb;
+}
+
+.summary-price .price {
+	color: #e12228;
+}
+
+.summary-price .price span {
+	font-size: 24px;
+	vertical-align: bottom;
+}
+
+.summary-price .price a {
+	color: #c81623;
+}
+
+.summary-price .reviews {
+	position: absolute;
+	top: -3px;
+	right: 11px;
+}
+
+.summary-price .reviews span {
+	color: #1474af;
+}
+
+.summary-discount {
+	height: 70px;
+	margin-bottom: 10px;
+	background-color: #fee9eb;
+}
+
+.summary-discount dt {
+	margin-top: 5px;
+}
+
+.summary-discount dd {
+	width: 550px;
+	line-height: 28px;
+	vertical-align: top;
+}
+
+.summary-discount span {
+	display: inline-block;
+	width: 40px;
+	height: 22px;
+	margin-right: 8px;
+	background-color: #c81623;
+	color: #ffffff;
+	text-align: center;
+	line-height: 22px;
+}
+
+.summary-discount a {
+	color: #999999;
+}
+
+.summary-support,
+.summary-delivery {
+	line-height: 27px;
+}
+
+.summary-delivery dd {
+	vertical-align: top;
+}
+
+.summary-delivery span {
+	font-weight: 700;
+}
+
+.choose {
+	width: 548px;
+	height: 238px;
+	margin-top: 5px;
+	padding-top: 10px;
+	border-top: 1px solid #ededed;
+	border-bottom: 1px solid #ededed;
+}
+
+.choose dl {
+	height: 34px;
+	margin-top: 7px;
+	line-height: 34px;
+}
+
+.choose a {
+	display: inline-block;
+	padding: 0 15px;
+	margin-right: 5px;
+	border: 1px solid #ededed;
+	background-color: #f7f7f7;
+}
+
+.choose a.selected {
+	border-color: #c81623;
+}
+
+/* 加入购物车 */
+.item-info-wrapper .cart {
+	height: 46px;
+	margin-top: 10px;
+
+}
+
+.item-info-wrapper .cart .number {
+	position: relative;
+	float: left;
+	width: 51px;
+	border: 1px solid #cccccc;
+}
+
+.item-info-wrapper .cart .number input {
+	width: 33px;
+	height: 44px;
+	text-align: center;
+	line-height: 46px;
+}
+
+.item-info-wrapper .cart .number .add,
+.item-info-wrapper .cart .number .reduce {
+	position: absolute;
+	right: 0;
+	width: 15px;
+	height: 22px;
+	line-height: 22px;
+	background-color: #f1f1f1;
+	border-left: 1px solid #cccccc;
+	text-align: center;
+}
+
+.item-info-wrapper .cart .number .add {
+	top: 0;
+	height: 23px;
+}
+
+.item-info-wrapper .cart .number .reduce {
+	bottom: 0;
+	border-top: 1px solid #cccccc;
+}
+
+.item-info-wrapper .cart>a {
+	display: block;
+	float: left;
+	width: 142px;
+	margin-left: 10px;
+	background-color: #c81623;
+	font-size: 18px;
+	color: #ffffff;
+	/* font-weight: 700; */
+	text-align: center;
+	line-height: 46px;
+}
