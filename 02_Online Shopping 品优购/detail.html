@@ -22,22 +22,10 @@
 	<link rel="stylesheet" href="css/base.css">
 	<!-- 采用模块化开发，引入公共样式文件 -->
 	<link rel="stylesheet" href="css/common.css">
-	<!-- 首页独立样式文件 -->
+	<!-- 商品介绍页独立样式文件 -->
 	<link rel="stylesheet" href="css/detail.css">
-	<script>
-		window.addEventListener('load', function () {
-			console.log('Load!');
-			var dropdown = document.querySelector('.dropdown');
-			var dropdownContent = document.querySelector('.dropdown').querySelector('.dd');
-
-			dropdown.addEventListener('mouseover', function () {
-				dropdownContent.style.display = 'block';
-			})
-			dropdown.addEventListener('mouseout', function () {
-				dropdownContent.style.display = 'none';
-			})
-		})
-	</script>
+	<!-- 商品介绍页独立 js 文件 -->
+	<script src="js/detail.js"></script>
 </head>
 
 <body>
@@ -177,8 +165,14 @@
 			<!-- 左侧商品图片 -->
 			<div class="product-wrapper">
 				<!-- 上面产品大图 -->
-				<div class="big">
-					<img src="upload/iPhone 6s.png" alt="iPhone 6s">
+				<div class="preview-img">
+					<img src="upload/iphone-6s-space-gray.png" alt="iPhone 6s">
+					<!-- 遮挡层 -->
+					<div class="mask"></div>
+					<!-- 大图显示 -->
+					<div class="big">
+						<img src="upload/iphone-6s-big.png" alt="big iphone">
+					</div>
 				</div>
 
 				<!-- 中间产品小图们 -->
@@ -239,10 +233,10 @@
 					<dl class="choose-color">
 						<dt>选择颜色</dt>
 						<dd>
-							<a href="javascript:;" class="selected">玫瑰金</a>
+							<a href="javascript:;">玫瑰金</a>
 							<a href="javascript:;">金色</a>
 							<a href="javascript:;">白色</a>
-							<a href="javascript:;">深空灰</a>
+							<a href="javascript:;" class="selected">深空灰</a>
 						</dd>
 					</dl>
 					<dl class="choose-version">

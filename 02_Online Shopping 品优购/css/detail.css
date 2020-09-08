@@ -28,12 +28,44 @@
 }
 
 /* 上面产品大图 */
-.product-wrapper .big {
+.product-wrapper .preview-img {
+	position: relative;
 	height: 400px;
-	padding-top: 33px;
+	/* padding-top: 33px; */
 	margin-bottom: 64px;
 	border: 1px solid #ededed;
-	text-align: center;
+	/* text-align: center; */
+}
+
+.product-wrapper .preview-img .mask {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 200px;
+	background-color: #fede4f;
+	opacity: .5;
+	cursor: move;
+}
+
+.product-wrapper .preview-img .big {
+	display: none;
+	position: absolute;
+	z-index: 999;
+	top: -1px;
+	left: 410px;
+	width: 500px;
+	height: 500px;
+	border: 1px solid #ededed;
+	overflow: hidden;
+	box-shadow: 0 0 30px rgba(0, 0, 0, .1);
+}
+
+.product-wrapper .preview-img .big img {
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 /* 中间产品小图们 */
