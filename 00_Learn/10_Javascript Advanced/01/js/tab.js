@@ -13,6 +13,9 @@ window.addEventListener('load', function () {
             this.ul = this.obj.querySelector('ul');
             // section 的父节点 tabscon
             this.tabscon = this.obj.querySelector('.tabscon');
+            // 记录当先选中的是哪个一个选项卡（tab）
+            this.currentTab = 0;
+            // console.log(this.currentTab);
 
             // 初始化
             this.init();
@@ -60,6 +63,10 @@ window.addEventListener('load', function () {
             that.clearStyle();
             this.className = 'liactive';
             that.sections[this.getAttribute('index')].className = 'conactive';
+
+            // 更新当前选中的选项卡
+            that.currentTab = this.getAttribute('index');
+            // console.log('toggle! current tab: ' + that.currentTab);
         }
 
         // 添加新的 tab & section
@@ -72,12 +79,41 @@ window.addEventListener('load', function () {
             that.ul.insertAdjacentHTML('beforeend', li);
             that.tabscon.insertAdjacentHTML('beforeend', section);
             that.init();
+
+            // 更新当前选中的选项卡
+            that.currentTab = that.lis.length - 1;
+            // console.log('add! current tab: ' + that.currentTab);
         }
 
         // 删除 tab & section
         closeTab(e) {
+            // 阻止冒泡（li 也有 click 事件）
             e.stopPropagation();
-            console.log(this.parentNode.getAttribute('index'));
+            var index = this.parentNode.getAttribute('index');
+            // console.log(index);
+
+            that.lis[index].remove();
+            that.sections[index].remove();
+
+            // 删除之后更新 tab & section
+            that.init();
+
+            // 如果删除的是处于选定状态的 tab，那么将自动选定其上一个 tab，否则不变
+            // 使用鼠标模拟点击动作指定选定操作
+            if (index == that.currentTab) {
+                if (index == 0) {
+                    if (that.lis.length > 0) {
+                        that.currentTab = 0;
+                        that.lis[0].click();
+                    } else {
+                        that.currentTab = -1;
+                    }
+                } else {
+                    that.currentTab = --index;
+                    // console.log('close! current tab: ' + that.currentTab);
+                    that.lis[index] && that.lis[index].click();    
+                }
+            }
         }
 
     }
