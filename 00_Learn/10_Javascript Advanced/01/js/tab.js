@@ -33,14 +33,18 @@ window.addEventListener('load', function () {
                 this.lis[i].setAttribute('index', i);
                 // console.log(this.lis[i].getAttribute('index'));
 
-                // 之后给每个 li 绑定点击事件
+                // 1. 之后给每个 li 绑定点击切换事件
                 this.lis[i].addEventListener('click', this.toggleTab);
 
-                // 给每个 li 右上角的关闭按钮注册事件
+                // 3. 给每个 li 右上角的关闭按钮注册事件
                 this.closeButtons[i].addEventListener('click', this.closeTab);
+
+                // 4. 双击可以进行编辑
+                this.tabs[i].addEventListener('dblclick', this.editTab);
+                this.sections[i].addEventListener('dblclick', this.editTab);
             }
 
-            // 给右上角 + 绑定事件
+            // 2. 给右上角 + 绑定事件
             this.add.addEventListener('click', this.addTab);
         }
 
@@ -48,6 +52,7 @@ window.addEventListener('load', function () {
             this.lis = this.obj.querySelectorAll('li');
             this.sections = this.obj.querySelectorAll('section');
             this.closeButtons = this.obj.querySelectorAll('.icon-close');
+            this.tabs = this.obj.querySelectorAll('.firstnav ul li span:first-child');
         }
 
         // 使用排他思想清除样式
@@ -122,6 +127,33 @@ window.addEventListener('load', function () {
             // }
         }
 
+        // 双击编辑
+        editTab() {
+            // 先禁用双击选中
+            window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+
+            var text = this.innerHTML;
+            this.innerHTML = '<input type="text">';
+
+            // 获取这个新生成的输入框
+            var input = this.children[0];
+            input.value = text;
+
+            // 当进入编辑模式时，直接选中所有文字
+            input.select();
+
+            // 退出编辑模式将输入的文字赋值给 tab
+            input.addEventListener('blur', function () {
+                this.parentNode.innerHTML = this.value;
+            })
+            input.addEventListener('keyup', function (e) {
+                // 如果敲回车也可以确定修改
+                if (e.keyCode == 13) {
+                    // 手动调用 blur 效果
+                    this.blur();
+                }
+            })
+        }
     }
 
     // 实例化对象
