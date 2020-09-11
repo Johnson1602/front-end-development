@@ -114,6 +114,12 @@ window.addEventListener('load', function () {
                     that.lis[index] && that.lis[index].click();    
                 }
             }
+
+            // 上面那种通过判断删除的是否为当前选定的选项卡的方法有点麻烦
+            // 更简单的方法是：删除之后判断一下当前是否还有选中的选项卡，如果还有的话那么就不需要做操作，实现代码如下
+            // if (document.querySelector('.liactive')) {
+            //     return;
+            // }
         }
 
     }
