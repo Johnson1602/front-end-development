@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Search Product</title>
+	<style>
+		table {
+			width: 400px;
+			border: 1px solid #000;
+			border-collapse: collapse;
+			margin: 0 auto;
+		}
+
+		td,
+		th {
+			border: 1px solid #000;
+			text-align: center;
+		}
+
+		input {
+			width: 50px;
+		}
+
+		.search {
+			width: 600px;
+			margin: 20px auto;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="search">
+		按照价格查询: <input type="text" class="price-from"> - <input type="text" class="price-to"> <button
+			class="search-price">搜索</button> 按照商品名称查询: <input type="text" class="product-name"> <button
+			class="search-product">查询</button>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>产品名称</th>
+				<th>价格</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
+	<script>
+		var data = [{
+			id: 1,
+			pname: '小米',
+			price: 3999
+		}, {
+			id: 2,
+			pname: 'oppo',
+			price: 999
+		}, {
+			id: 3,
+			pname: '荣耀',
+			price: 1299
+		}, {
+			id: 4,
+			pname: '华为',
+			price: 1999
+		}];
+
+		// 1. 获取所要操作的元素
+		var tbody = document.querySelector('tbody');
+		var searchPrice = document.querySelector('.search-price');
+		var priceFrom = document.querySelector('.price-from');
+		var priceTo = document.querySelector('.price-to');
+		var searchProduct = document.querySelector('.search-product');
+		var productName = document.querySelector('.product-name');
+
+		// 2. 页面首次打开时将所有数据渲染出来
+		renderData(data);
+
+		// 3. 当更新搜索条件时重新渲染数据
+		function renderData(data) {
+			// 首先清空原有数据
+			tbody.innerHTML = '';
+			data.forEach(function (value) {
+				var tr = document.createElement('tr');
+				tr.innerHTML = '<td>' + value.id + '</td><td>' + value.pname + '</td><td>' + value.price + '</td>';
+				tbody.appendChild(tr);
+			})
+		}
+
+		// 4. 按照价格区间查询
+		searchPrice.addEventListener('click', function() {
+			var priceData = data.filter(function(product) {
+				return product.price >= priceFrom.value && product.price <= priceTo.value;
+			})
+			renderData(priceData);
+		})
+
+		// 5. 按照商品名称查询
+		searchProduct.addEventListener('click', function() {
+			// 按道理说这里仍然应该使用 filter 方法
+			// 但是为了练习，这里用一下 some 方法
+			var productData = [];
+			data.some(function(product) {
+				if (product.pname == productName.value) {
+					productData.push(product);
+					return true;
+				}
+			})
+			renderData(productData);
+		})
+
+	</script>
+</body>
+
+</html>

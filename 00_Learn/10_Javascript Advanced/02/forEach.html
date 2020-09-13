@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ForEach Function</title>
+</head>
+<body>
+	<script>
+		var arr = [1, 2, 3];
+		arr.forEach(function(val, index, array) {
+			console.log(val);
+		});
+
+		/*
+		对于回调函数的理解：
+		1. 回调函数是当作参数传递给其他函数的一种函数
+		2. 一般回调函数都是在另一个函数内部其他操作执行完成之后，最后才执行
+		3. 传递回调函数的时候一般都会写上形参，与这些形参相对应的实参，是在外层函数当中传递的，然后在回调函数中对这些参数进行操作
+		4. 所以可以理解为，对象方法中 callback 函数中的形参，是对象方法提供给用户的，可以让用户操作的参数
+
+		例如：
+		1. 在 Array 的方法 forEach 中，传递的 callback 函数有 3 个参数
+		2. 在 forEach 方法的实现中，其实首先进行了 for 循环，for (var i = 0; i < length; i++)
+		3. 在每次循环中，都会调用 callback 函数，function(arr[i], i, this)，可以看到，这里 callback 的 3 个参数其实是在 forEach 中定义的，可以直接拿来用
+		4. 可以将 Array.prototype.forEach(callback) 方法想象为
+		Array.prototype.forEach = function() {
+			var length = this.length;
+			for (var i = 0; i < length; i++) {
+				// function(value, index, array){...}
+				callback(this[i], i, this);
+			}
+		}
+
+		function callback = function(value, index, array) {
+			...
+		}
+
+		5. 相当于 Array 提供的方法是帮你做了判断和遍历的操作，遍历完之后具体想干什么，是你要自己在 callback 函数里进行定义的
+		*/
+	</script>
+</body>
+</html>
