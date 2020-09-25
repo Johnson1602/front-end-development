@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Username Check</title>
+	<style>
+		span {
+			color: #aaaaaa;
+		}
+
+		.correct {
+			color: green;
+		}
+
+		.incorrect {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" name="username" id="username"> <span>请输入用户名</span>
+
+	<script>
+		var username = document.querySelector('#username');
+		var span = document.querySelector('span');
+
+		// 正则表达式：用户名只允许英文字母大小写、数字、-、_，且要求 6-16 位
+		var reg = /^[a-zA-Z0-9-_]{6,16}$/;
+
+		// 当文本框失去焦点就判断输入是否合法
+		username.addEventListener('blur', function() {
+			// console.log(this.value);
+			if (reg.test(this.value)) {
+				span.className = 'correct';
+				span.innerHTML = '您可以使用这个用户名';
+			} else {
+				span.className = 'incorrect';
+				span.innerHTML = '请输入符合要求的用户名';
+			}
+		})
+	</script>
+</body>
+</html>
