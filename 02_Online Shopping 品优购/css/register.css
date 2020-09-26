@@ -121,15 +121,18 @@ header {
 }
 
 .register-body form .safe .weak {
-	background-color: #de1111;
+	background-color: #cccccc;
+	/* background-color: #de1111; */
 }
 
 .register-body form .safe .middle {
-	background-color: #f79100;
+	background-color: #cccccc;
+	/* background-color: #f79100; */
 }
 
 .register-body form .safe .strong {
-	background-color: #40b83f;
+	background-color: #cccccc;
+	/* background-color: #40b83f; */
 }
 
 .register-body form ul li input[type=checkbox] {
