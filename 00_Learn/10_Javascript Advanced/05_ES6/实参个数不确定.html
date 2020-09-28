@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>实参个数不确定</title>
+</head>
+<body>
+	<script>
+		/*
+		const sum = (...args) => {
+			let total = 0;
+			args.forEach((value) => {
+				total += value;
+			})
+			return total;
+		}
+		*/
+
+		// 上面的函数可以简化为
+		const sum = (...args) => {
+			let total = 0;
+			args.forEach(value => total += value);
+			return total;
+		}
+
+		console.log(sum(1, 2));
+		console.log(sum(1, 2, 3));
+	</script>
+</body>
+</html>

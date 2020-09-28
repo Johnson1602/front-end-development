@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>箭头函数</title>
+</head>
+<body>
+	<script>
+		const fn = () => {
+			console.log('Hello');
+		}
+		fn();
+
+		// 如果函数体只有一句话，那么大括号可以省略
+		const fn2 = () => console.log('Hello');
+		fn2();
+
+		const fn3 = (a) => console.log(a);
+		fn3('Hello');
+
+		// 如果形参只有一个，那么小括号可以省略
+		const fn4 = a => console.log(a);
+		fn4('Hello');
+
+	</script>
+</body>
+</html>
