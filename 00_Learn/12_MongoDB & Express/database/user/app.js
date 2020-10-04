@@ -18,6 +18,7 @@
 
 const http = require('http');
 const url = require('url');
+const querystring = require('querystring');
 const mongoose = require('mongoose');
 
 // 创建服务器之前，先连接数据库，默认端口是 27017，可以省略不写
@@ -63,12 +64,14 @@ app.on('request', async (req, res) => {
 	// 实现路由
 	const method = req.method;
 	// 使用对象解构拿到不带参数的 pathname
-	const { pathname } = url.parse(req.url);
+	// 第二个参数 true 代表将数据转化为对象
+	const { pathname, query } = url.parse(req.url, true);
 
 	// 根据请求方式不同进行路由
 	if (method == 'GET') {
 		// 如果请求方式是 GET
 		// 根据请求路径进行路由
+		console.log('get: ' + req.url);
 		if (pathname == '/' || pathname == '/index') {
 			res.writeHead(200, {
 				'content-type': 'text/html;charset=utf8'
@@ -78,7 +81,9 @@ app.on('request', async (req, res) => {
 			// 由于这里需要使用到数据库中的数据，所以这里不能直接返回静态资源（html 页面）
 			// 所以这里将返回拼接的变量
 
-			// 首先拿到所有用户的数据，使用异步函数的方式进行接收
+			// 首先拿到所有用户的数据
+			// find() 方法返回的是一个 promise 对象
+			// 这里不使用 then() 的方式处理结果，而使用异步函数 await 的方式进行接收
 			let users = await User.find();
 			// console.log(users);
 
@@ -95,7 +100,7 @@ app.on('request', async (req, res) => {
 			<body>
 				<div class="container">
 					<h6>
-						<a href="add.html" class="btn btn-primary">添加用户</a>
+						<a href="/add" class="btn btn-primary">添加用户</a>
 					</h6>
 					<table class="table table-striped table-bordered">
 						<tr>
@@ -128,7 +133,8 @@ app.on('request', async (req, res) => {
 					<td>${user.email}</td>
 					<td>
 						<a href="" class="btn btn-danger btn-xs">删除</a>
-						<a href="" class="btn btn-success btn-xs">修改</a>
+						// 通过 GET 的方式传递参数
+						<a href="/modify?id=${user._id}" class="btn btn-success btn-xs">修改</a>
 					</td>
 				</tr>
 				`;
@@ -144,6 +150,132 @@ app.on('request', async (req, res) => {
 
 			// 返回拼接好的数据
 			res.end(list);
+		} else if (pathname == '/add') { 
+			let add = `
+			<!DOCTYPE html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8">
+				<title>添加用户</title>
+				<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+			</head>
+			<body>
+				<div class="container">
+					<h3>添加用户</h3>
+					<form method="post" action="/add">
+					  <div class="form-group">
+						<label>用户名</label>
+						<input type="text" class="form-control" placeholder="请填写用户名" name="name">
+					  </div>
+					  <div class="form-group">
+						<label>密码</label>
+						<input type="password" class="form-control" placeholder="请填写密码" name="password">
+					  </div>
+					  <div class="form-group">
+						<label>年龄</label>
+						<input type="text" class="form-control" placeholder="请填写年龄" name="age">
+					  </div>
+					  <div class="form-group">
+						<label>邮箱</label>
+						<input type="email" class="form-control" placeholder="请填写邮箱" name="email">
+					  </div>
+					  <div class="form-group">
+						<label>请选择爱好</label>
+						<div>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="足球" name="hobbies"> 足球
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="篮球" name="hobbies"> 篮球
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="橄榄球" name="hobbies"> 橄榄球
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="敲代码" name="hobbies"> 敲代码
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="抽烟" name="hobbies"> 抽烟
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="喝酒" name="hobbies"> 喝酒
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="烫头" name="hobbies"> 烫头
+							</label>
+						</div>
+					  </div>
+					  <button type="submit" class="btn btn-primary">添加用户</button>
+					</form>
+				</div>
+			</body>
+			</html>
+			`;
+
+			res.end(add);
+		} else if (pathname == '/modify') {
+			// 修改用户数据，同样是拼接字符串的方式返回页面
+			let modify = `
+			<!DOCTYPE html>
+			<html lang="en">
+			<head>
+				<meta charset="UTF-8">
+				<title>修改用户信息</title>
+				<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+			</head>
+			<body>
+				<div class="container">
+					<h3>添加用户</h3>
+					<form method="post" action="/add">
+					  <div class="form-group">
+						<label>用户名</label>
+						<input type="text" class="form-control" placeholder="请填写用户名" name="name">
+					  </div>
+					  <div class="form-group">
+						<label>密码</label>
+						<input type="password" class="form-control" placeholder="请填写密码" name="password">
+					  </div>
+					  <div class="form-group">
+						<label>年龄</label>
+						<input type="text" class="form-control" placeholder="请填写年龄" name="age">
+					  </div>
+					  <div class="form-group">
+						<label>邮箱</label>
+						<input type="email" class="form-control" placeholder="请填写邮箱" name="email">
+					  </div>
+					  <div class="form-group">
+						<label>请选择爱好</label>
+						<div>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="足球" name="hobbies"> 足球
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="篮球" name="hobbies"> 篮球
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="橄榄球" name="hobbies"> 橄榄球
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="敲代码" name="hobbies"> 敲代码
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="抽烟" name="hobbies"> 抽烟
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="喝酒" name="hobbies"> 喝酒
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="烫头" name="hobbies"> 烫头
+							</label>
+						</div>
+					  </div>
+					  <button type="submit" class="btn btn-primary">添加用户</button>
+					</form>
+				</div>
+			</body>
+			</html>
+			`;
+
 		} else {
 			res.writeHead(404, {
 				'content-type': 'text/html;charset=utf8'
@@ -152,6 +284,32 @@ app.on('request', async (req, res) => {
 		}
 	} else if (method == 'POST') {
 		// 如果请求方式是 POST
+		console.log('post: ' + req.url);
+		if (pathname == '/add') {
+			// 添加用户，接收用户提交的信息并添加到数据库中
+			// 接收数据，将数据保存在 formData 变量中
+			let formData = '';
+			req.on('data', chunk => {
+				formData += chunk;
+			});
+
+			req.on('end', async () => {
+				// console.log(formData);
+				// 将接收到数据解析为对象
+				let user = querystring.parse(formData);
+				// console.log(user);
+				// 将数据添加到数据库
+				// 由于 create() 方法返回的也是 promise 对象
+				// 这里使用 await 转换为同步函数执行
+				await User.create(user);
+
+				// 数据添加完毕之后，重定向到 list 页面，并结束响应
+				res.writeHead(301, {
+					Location: '/list'
+				});
+				res.end();
+			});
+		}
 	}
 });
 
