@@ -19,43 +19,11 @@
 const http = require('http');
 const url = require('url');
 const querystring = require('querystring');
-const mongoose = require('mongoose');
 
-// 创建服务器之前，先连接数据库，默认端口是 27017，可以省略不写
-mongoose.connect('mongodb://localhost/playground', {
-	useNewUrlParser: true,
-	useUnifiedTopology: true
-})
-	.then(() => console.log('Database connect succeeded'))
-	.catch(err => console.log('Database connect failed\n', err));
-
-// 创建用户集合 User
-const User = mongoose.model('User', new mongoose.Schema({
-	name: {
-		type: String,
-		required: true,
-		minlength: 2,
-		maxlength: 20
-	},
-	age: {
-		type: Number,
-		min: 18,
-		max: 80
-	},
-	password: {
-		type: String,
-		required: true,
-		min: 6,
-		max: 16
-	},
-	email: {
-		type: String,
-		required: true
-	},
-	hobbies: {
-		type: [String]
-	}
-}));
+// 连接数据库模块
+require('./model/index');
+// 引入 User 构造函数
+const User = require('./model/user');
 
 // 创建服务器
 const app = http.createServer();
