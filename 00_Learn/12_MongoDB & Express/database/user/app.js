@@ -72,12 +72,7 @@ app.on('request', async (req, res) => {
 		// 如果请求方式是 GET
 		// 根据请求路径进行路由
 		console.log('get: ' + req.url);
-		if (pathname == '/' || pathname == '/index') {
-			res.writeHead(200, {
-				'content-type': 'text/html;charset=utf8'
-			})
-			res.end('<h1>Welcome To Homepage</h1>');
-		} else if (pathname == '/list') {
+		if (pathname == '/' || pathname == '/list') {
 			// 由于这里需要使用到数据库中的数据，所以这里不能直接返回静态资源（html 页面）
 			// 所以这里将返回拼接的变量
 
@@ -133,7 +128,7 @@ app.on('request', async (req, res) => {
 					<td>${user.email}</td>
 					<td>
 						<a href="" class="btn btn-danger btn-xs">删除</a>
-						// 通过 GET 的方式传递参数
+						<!-- 通过 GET 的方式传递参数 -->
 						<a href="/modify?id=${user._id}" class="btn btn-success btn-xs">修改</a>
 					</td>
 				</tr>
@@ -203,6 +198,15 @@ app.on('request', async (req, res) => {
 							<label class="checkbox-inline">
 							  <input type="checkbox" value="烫头" name="hobbies"> 烫头
 							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="吃饭" name="hobbies"> 吃饭
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="睡觉" name="hobbies"> 睡觉
+							</label>
+							<label class="checkbox-inline">
+							  <input type="checkbox" value="打豆豆" name="hobbies"> 打豆豆
+							</label>
 						</div>
 					  </div>
 					  <button type="submit" class="btn btn-primary">添加用户</button>
@@ -215,6 +219,14 @@ app.on('request', async (req, res) => {
 			res.end(add);
 		} else if (pathname == '/modify') {
 			// 修改用户数据，同样是拼接字符串的方式返回页面
+			console.log(query);
+			// 根据传递过来的 _id 值去数据库中查找对应的用户数据
+			let user = await User.findOne({ _id: query.id });
+			console.log(user);
+
+			const hobbies = ['足球', '篮球', '橄榄球', '敲代码', '抽烟', '喝酒', '烫头', '吃饭', '睡觉', '打豆豆'];
+
+			// 拼接上半部分
 			let modify = `
 			<!DOCTYPE html>
 			<html lang="en">
@@ -225,57 +237,58 @@ app.on('request', async (req, res) => {
 			</head>
 			<body>
 				<div class="container">
-					<h3>添加用户</h3>
-					<form method="post" action="/add">
+					<h3>修改用户信息</h3>
+					<form method="post" action="/modify?id=${user._id}">
 					  <div class="form-group">
 						<label>用户名</label>
-						<input type="text" class="form-control" placeholder="请填写用户名" name="name">
+						<input type="text" class="form-control" placeholder="请填写用户名" name="name" value="${user.name}">
 					  </div>
 					  <div class="form-group">
 						<label>密码</label>
-						<input type="password" class="form-control" placeholder="请填写密码" name="password">
+						<input type="password" class="form-control" placeholder="请填写密码" name="password" value="${user.password}">
 					  </div>
 					  <div class="form-group">
 						<label>年龄</label>
-						<input type="text" class="form-control" placeholder="请填写年龄" name="age">
+						<input type="text" class="form-control" placeholder="请填写年龄" name="age" value="${user.age}">
 					  </div>
 					  <div class="form-group">
 						<label>邮箱</label>
-						<input type="email" class="form-control" placeholder="请填写邮箱" name="email">
+						<input type="email" class="form-control" placeholder="请填写邮箱" name="email" value="${user.email}">
 					  </div>
 					  <div class="form-group">
 						<label>请选择爱好</label>
 						<div>
-							<label class="checkbox-inline">
-							  <input type="checkbox" value="足球" name="hobbies"> 足球
-							</label>
-							<label class="checkbox-inline">
-							  <input type="checkbox" value="篮球" name="hobbies"> 篮球
-							</label>
-							<label class="checkbox-inline">
-							  <input type="checkbox" value="橄榄球" name="hobbies"> 橄榄球
-							</label>
-							<label class="checkbox-inline">
-							  <input type="checkbox" value="敲代码" name="hobbies"> 敲代码
-							</label>
-							<label class="checkbox-inline">
-							  <input type="checkbox" value="抽烟" name="hobbies"> 抽烟
-							</label>
-							<label class="checkbox-inline">
-							  <input type="checkbox" value="喝酒" name="hobbies"> 喝酒
-							</label>
-							<label class="checkbox-inline">
-							  <input type="checkbox" value="烫头" name="hobbies"> 烫头
-							</label>
+			`;
+
+			// 循环拼接 hobbies
+			hobbies.forEach(hobby => {
+				if (user.hobbies.includes(hobby)) {
+					modify += `
+					<label class="checkbox-inline">
+						<input type="checkbox" value="${hobby}" name="hobbies" checked> ${hobby}
+					</label>
+					`;
+				} else {
+					modify += `
+					<label class="checkbox-inline">
+						<input type="checkbox" value="${hobby}" name="hobbies"> ${hobby}
+					</label>
+					`;
+				}
+			});
+
+			// 拼接下半部分
+			modify += `
+							</div>
 						</div>
-					  </div>
-					  <button type="submit" class="btn btn-primary">添加用户</button>
+						<button type="submit" class="btn btn-primary">确认修改</button>
 					</form>
 				</div>
 			</body>
 			</html>
 			`;
 
+			res.end(modify);
 		} else {
 			res.writeHead(404, {
 				'content-type': 'text/html;charset=utf8'
@@ -309,6 +322,25 @@ app.on('request', async (req, res) => {
 				});
 				res.end();
 			});
+		} else if (pathname == '/modify') {
+			// 修改用户信息
+			// 首先接收客户端传过来的表单信息
+			let formData = '';
+			req.on('data', chunk => {
+				formData += chunk;
+			});
+
+			req.on('end', async () => {
+				let user = querystring.parse(formData);
+				// console.log(user);
+				// 更新数据库信息，第一个参数是查询规则，第二个参数是修改内容对象
+				await User.updateOne({ _id: query.id }, user);
+				// 修改完成之后重定向到 list 页面
+				res.writeHead(301, {
+					Location: '/'
+				});
+				res.end();
+			})
 		}
 	}
 });
