@@ -127,7 +127,7 @@ app.on('request', async (req, res) => {
 					</td>
 					<td>${user.email}</td>
 					<td>
-						<a href="" class="btn btn-danger btn-xs">删除</a>
+						<a href="/remove?id=${user._id}" class="btn btn-danger btn-xs">删除</a>
 						<!-- 通过 GET 的方式传递参数 -->
 						<a href="/modify?id=${user._id}" class="btn btn-success btn-xs">修改</a>
 					</td>
@@ -289,6 +289,14 @@ app.on('request', async (req, res) => {
 			`;
 
 			res.end(modify);
+		} else if (pathname == '/remove') {
+			// 从数据库中删除用户
+			await User.findOneAndDelete({ _id: query.id });
+			// 重定向至 list 页面
+			res.writeHead(301, {
+				Location: '/'
+			});
+			res.end();
 		} else {
 			res.writeHead(404, {
 				'content-type': 'text/html;charset=utf8'
