@@ -20,7 +20,7 @@ const Student = mongoose.model('Student', new mongoose.Schema({
 	},
 	email: String,
 	hobbies: [String],
-	collage: String,
+	college: String,
 	enterDate: {
 		type: Date,
 		default: Date.now

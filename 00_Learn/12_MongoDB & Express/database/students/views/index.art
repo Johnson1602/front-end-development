@@ -32,7 +32,7 @@
 			</label>
 			<label>
 				所属学院: 
-				<select class="normal" name="collage">
+				<select class="normal" name="college">
 					<option value="前端与移动开发">前端与移动开发</option>
 					<option value="PHP">PHP</option>
 					<option value="JAVA">JAVA</option>

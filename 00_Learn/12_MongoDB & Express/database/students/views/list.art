@@ -17,6 +17,24 @@
 			<th>所属学院</th>
 			<th>入学时间</th>
 		</tr>
+		<!-- 对于传递过来的 students 数组中的每个学生对象，都要新建一行并现实其中的内容 -->
+		{{each students}}
+			<tr>
+				<td>{{$value.name}}</td>
+				<td>{{$value.age}}</td>
+				<td>{{$value.sex}}</td>
+				<td>{{$value.email}}</td>
+				<!-- 爱好也要进行循环输出 -->
+				<td>
+					{{each $value.hobbies}}
+						<span>{{$value}}</span>
+					{{/each}}
+				</td>
+				<td>{{$value.college}}</td>
+				<!-- 时间进行格式化输出 -->
+				<td>{{dateFormat($value.enterDate, 'yyyy-mm-dd')}}</td>
+			</tr>
+		{{/each}}
 	</table>
 </body>
 </html>

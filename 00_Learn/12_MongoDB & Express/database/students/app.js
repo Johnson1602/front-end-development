@@ -14,9 +14,13 @@ const path = require('path');
 const serveStatic = require('serve-static');
 // 引入处理请求字符串模块
 const queryString = require('querystring');
+// 引入格式化时间模块
+const dateFormat = require('dateformat');
 
 // 设置模板引擎根目录
 template.defaults.root = path.join(__dirname, 'views');
+// 在模板引擎中引入变量（方法）
+template.defaults.imports.dateFormat = dateFormat;
 // 获取路由方法
 const router = getRouter();
 // 获取静态资源访问方法，参数是静态资源的存放位置
@@ -29,8 +33,14 @@ router.get('/add', (req, res) => {
 });
 
 // 创建‘展示学生列表’页面的路由
-router.get('/list', (req, res) => {
-	let list = template('list.art', {});
+router.get('/list', async (req, res) => {
+	// 从数据库中拿出所有学生的信息，使用模板引擎进行拼接
+	// 由于 find 返回 promise 对象，所以这里使用 await 接收返回值
+	let students = await Student.find();
+	// console.log(students);
+	let list = template('list.art', {
+		students: students
+	});
 	res.end(list);
 });
 
