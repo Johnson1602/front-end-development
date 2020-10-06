@@ -12,6 +12,8 @@ const template = require('art-template');
 const path = require('path');
 // 引入静态资源处理模块
 const serveStatic = require('serve-static');
+// 引入处理请求字符串模块
+const queryString = require('querystring');
 
 // 设置模板引擎根目录
 template.defaults.root = path.join(__dirname, 'views');
@@ -38,6 +40,24 @@ router.get('/', (req, res) => {
 		Location: '/list'
 	});
 	res.end();
+});
+
+// 创建添加学生的 post 路由
+router.post('/add', (req, res) => {
+	// 接收数据
+	let formData = '';
+	req.on('data', chunk => {
+		formData += chunk;
+	});
+
+	req.on('end', async () => {
+		let student = queryString.parse(formData);
+		await Student.create(student);
+		res.writeHead(301, {
+			Location: '/list'
+		});
+		res.end();
+	});
 });
 
 // 建立服务器

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // 连接数据库
-mongoose.connect('mongodb://localhost/management', {
+mongoose.connect('mongodb://localhost/playground', {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 })
