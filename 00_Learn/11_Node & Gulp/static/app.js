@@ -29,7 +29,7 @@ app.on('request', (req, res) => {
 				'content-type': 'text/html;charset=utf8'
 			})
 			res.end('<h1>Page not found</h1>');
-			console.log(errord);
+			console.log(error);
 
 			// end program
 			return;
