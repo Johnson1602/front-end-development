@@ -51,8 +51,11 @@ const Post = mongoose.model('Post', postSchema);
 Post.create({ title: 'Post test 3', age: 23, category: 'jquery', author: 'ad' })
 	.then(result => console.log(result))
 	.catch(error => {
+		// 获取错误对象
 		var err = error.errors;
+		// 循环错误对象中的每个错误
 		for (const attr in err) {
+			// 打印错误信息
 			console.log(err[attr].message);
 		}
 	});

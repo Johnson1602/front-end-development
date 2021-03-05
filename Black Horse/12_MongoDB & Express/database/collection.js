@@ -19,7 +19,6 @@ const courseSchema = new mongoose.Schema({
 const Course = mongoose.model('Course', courseSchema);	// courses
 
 // 4. create a new document in collection 'courses'
-/*
 const course = new Course({
 	name: 'MongoDB Basics',
 	author: 'Johnson',
@@ -28,7 +27,6 @@ const course = new Course({
 
 // insert the above document into collection
 course.save();
-*/
 
 // 5. another way to create document: use static method
 // 5.1 using callback function
@@ -44,10 +42,10 @@ Course.create({
 */
 
 // 5.2 using promise
-Course.create({
-	name: 'Node.js',
-	author: 'Johnson',
-	isPublished: false
-})
-	.then(doc => console.log(doc))
-	.catch(err => console.log(err));
+// Course.create({
+// 	name: 'Node.js',
+// 	author: 'Johnson',
+// 	isPublished: false
+// })
+// 	.then(doc => console.log(doc))
+// 	.catch(err => console.log(err));
