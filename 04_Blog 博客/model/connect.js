@@ -7,4 +7,3 @@ mongoose.connect('mongodb://localhost/blog', {
     })
     .then(() => console.log('Connected to database "blog"'))
     .catch(() => console.log('Failed to connect to database "blog'))
-
