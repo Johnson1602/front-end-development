@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="/admin/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/admin/css/base.css">
+</head>
+
+<body>
+    <div class="login-body">
+        <div class="login-container">
+            <h4 class="title">黑马程序员 - 博客管理员登录</h4>
+            <div class="login">
+                <form action="/admin/login" method="POST" id="login-form">
+                    <div class="form-group">
+                        <label>邮件</label>
+                        <input type="email" class="form-control" placeholder="请输入邮件地址" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" class="form-control" placeholder="请输入密码" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">登录</button>
+                </form>
+            </div>
+            <div class="tips"></div>
+        </div>
+    </div>
+    <script src="/admin/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/admin/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/admin/js/common.js"></script>
+    <script>
+        // 拿到 login-form 并添加 submit 事件，拦截登陆表单的发送
+        $('#login-form').on('submit', function () {
+            // 拿到转换为对象格式的 form data
+            let formData = serializeArrayToJson($(this))
+            // console.log(formData)
+
+            // 验证表单内容，不能为空且控制长度
+            if (formData.email.trim().length == 0 || formData.email.trim().length > 30) {
+                alert("请输入正确的 email")
+                return false
+            }
+
+            if (formData.password.trim().length == 0 || formData.password.trim().length > 20) {
+                alert("请输入正确的 password")
+                return false
+            }
+            // 验证通过就继续提交表单
+        })
+    </script>
+</body>
+
+</html>
