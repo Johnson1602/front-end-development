@@ -1,0 +1,7 @@
+{{msg}}
+
+<ul>
+    {{each users}}
+    <li>{{$value.name}} is {{$value.age}} years old</li>
+    {{/each}}
+</ul>
