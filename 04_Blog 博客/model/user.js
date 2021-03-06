@@ -1,5 +1,6 @@
 // 创建用户集合
 const mongoose = require('mongoose')
+const bcrypt = require('bcrypt')
 
 // 创建用户集合规则
 const userSchema = mongoose.Schema({
@@ -37,15 +38,20 @@ const userSchema = mongoose.Schema({
 const User = mongoose.model('User', userSchema)
 
 // 新建超级用户
-// User.create({
-//     username: 'Johnson',
-//     email: 'johnsonxwy@gmail.com',
-//     password: '123456sobad',
-//     role: 'admin',
-//     status: 0
-// })
-//     .then(() => console.log('Created admin user'))
-//     .catch(() => console.log('Failed to create admin user'))
+async function createUser() {
+    const salt = await bcrypt.genSalt(10)
+    const pass = await bcrypt.hash('123456sobad', salt)
+
+    await User.create({
+        username: 'Johnson',
+        email: 'johnsonxwy@gmail.com',
+        password: pass,
+        role: 'admin',
+        status: 0
+    })
+}
+
+// createUser()
 
 // 开放构造函数出去
 module.exports = {
