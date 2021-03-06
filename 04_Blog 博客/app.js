@@ -18,6 +18,13 @@ app.engine('art', require('express-art-template'))  // 使用的模版引擎
 app.set('views', path.join(__dirname, 'views'))     // 模版文件的路径
 app.set('view engine', 'art')                       // 模版文件默认后缀名
 
+app.use((req, res, next) => {
+    if (req.url == '/admin/login' || req.url == '/admin/user' || req.url == '/admin/logout' || req.url == '/admin/new-user') {
+        console.log(`    ${req.method} ${req.url}`)
+    }
+    next()
+})
+
 // 使用 express-session 处理 cookie & session
 app.use(session({secret: 'a strong key'}))
 
@@ -41,6 +48,12 @@ app.use('/admin', admin)
 // not found
 app.use((req, res) => {
     res.status(404).send('The resource you are trying to get is not on this server.')
+})
+
+// 错误处理
+app.use((err, req, res, next) => {
+    let { path, msg } = JSON.parse(err)
+    res.redirect(`${path}?msg=${msg}`)
 })
 
 // listen on port 3000
