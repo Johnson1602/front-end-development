@@ -19,7 +19,7 @@ app.set('views', path.join(__dirname, 'views'))     // 模版文件的路径
 app.set('view engine', 'art')                       // 模版文件默认后缀名
 
 app.use((req, res, next) => {
-    if (req.url == '/admin/login' || req.url == '/admin/user' || req.url == '/admin/logout' || req.url == '/admin/new-user') {
+    if (req.url == '/admin/login' || req.url == '/admin/user' || req.url == '/admin/logout' || req.url == '/admin/user-edit' || req.url == '/admin/user-add') {
         console.log(`    ${req.method} ${req.url}`)
     }
     next()
@@ -52,8 +52,17 @@ app.use((req, res) => {
 
 // 错误处理
 app.use((err, req, res, next) => {
-    let { path, msg } = JSON.parse(err)
-    res.redirect(`${path}?msg=${msg}`)
+    // 由于传递过来的错误的参数个数可能不一样，所以要动态生成 path 后面的参数
+    // let { path, msg } = JSON.parse(err)
+    // 先将自负串转换为对象
+    let errObj = JSON.parse(err)
+    let params = []
+    for (let attr in errObj) {
+        if (attr != 'path') {
+            params.push(`${attr}=${errObj[attr]}`)
+        }
+    }
+    res.redirect(`${errObj.path}?${params.join('&')}`)
 })
 
 // listen on port 3000

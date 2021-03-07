@@ -12,18 +12,18 @@
         <div class="main">
             <!-- 分类标题 -->
             <div class="title">
-                <h4>5b9a716cb2d2bf17706bcc0a</h4>
+                <h4 style="display: <%= user ? 'block' : 'none' %>">编辑用户信息 - {{@user && user.username}}</h4>
                 <p class="tips">{{msg && msg}}</p>
             </div>
             <!-- /分类标题 -->
-            <form class="form-container" action="/admin/new-user" method="POST">
+            <form class="form-container" action="{{link}}" method="POST">
                 <div class="form-group">
                     <label>用户名</label>
-                    <input type="text" class="form-control" placeholder="请输入用户名" name="username">
+                    <input type="text" value="{{user && user.username}}" class="form-control" placeholder="请输入用户名" name="username">
                 </div>
                 <div class="form-group">
                     <label>邮箱</label>
-                    <input type="email" class="form-control" placeholder="请输入邮箱地址" name="email">
+                    <input type="email" value="{{user && user.email}}" class="form-control" placeholder="请输入邮箱地址" name="email">
                 </div>
                 <div class="form-group">
                     <label>密码</label>
@@ -32,19 +32,19 @@
                 <div class="form-group">
                     <label>角色</label>
                     <select class="form-control" name="role">
-                        <option value="normal">普通用户</option>
-                        <option value="admin">超级管理员</option>
+                        <option value="normal" {{user && user.role == 'normal' ? 'selected' : ''}}>用户</option>
+                        <option value="admin" {{user && user.role == 'admin' ? 'selected' : ''}}>管理员</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>状态</label>
                     <select class="form-control" name="status">
-                        <option value="1">启用</option>
-                        <option value="0">禁用</option>
+                        <option value="1" {{user && user.status == '1' ? 'selected' : ''}}>启用</option>
+                        <option value="0" {{user && user.status == '0' ? 'selected' : ''}}>禁用</option>
                     </select>
                 </div>
                 <div class="buttons">
-                    <input type="submit" class="btn btn-primary">
+                    <input type="submit" value={{button}} class="btn btn-primary">
                 </div>
             </form>
         </div>

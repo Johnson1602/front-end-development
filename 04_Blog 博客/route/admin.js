@@ -15,10 +15,13 @@ admin.get('/user', require('./admin/userPage'))
 // 用户退出
 admin.get('/logout', require('./admin/logout'))
 
-// 访问添加新用户页面
-admin.get('/new-user', require('./admin/newUser'))
+// 访问编辑用户页面
+admin.get('/user-edit', require('./admin/userEdit'))
 
 // 添加新用户
-admin.post('/new-user', require('./admin/newUserAdd'))
+admin.post('/user-add', require('./admin/userAddFn'))
+
+// 编辑已存在用户
+admin.post('/user-edit', require('./admin/userEditFn'))
 
 module.exports = admin

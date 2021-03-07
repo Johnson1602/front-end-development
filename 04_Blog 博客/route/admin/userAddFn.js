@@ -14,7 +14,7 @@ module.exports = async (req, res, next) => {
         // return  // 这也可以和上一条代码写在一行中
 
         // 由于 next 只能接收一个字符串的参数，所以先将重定向的路由以及错误信息转换为字符串
-        return next(JSON.stringify({ path: '/admin/new-user', msg: error.message }))
+        return next(JSON.stringify({ path: '/admin/user-edit', msg: error.message }))
     }
 
     // 验证邮箱是否已经注册过
@@ -22,7 +22,7 @@ module.exports = async (req, res, next) => {
     if (user) {
         // 已经被注册过，重定向回 user-edit 并提示错误
         // return res.redirect('/admin/new-user?msg=邮箱地址已被注册')
-        return next(JSON.stringify({ path: '/admin/new-user', msg: '邮箱地址已被注册' }))
+        return next(JSON.stringify({ path: '/admin/user-edit', msg: '邮箱地址已被注册' }))
     }
 
     // 邮箱未被注册，将新用户添加到数据库中
@@ -34,5 +34,5 @@ module.exports = async (req, res, next) => {
     await User.create(req.body)
 
     // 添加新用户后重定向到用户列表页
-    res.redirect('/admin/new-user')
+    res.redirect('/admin/user')
 }
