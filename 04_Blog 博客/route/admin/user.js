@@ -7,6 +7,9 @@ module.exports = async (req, res) => {
     // 将用户数据传递给模版文件进行渲染
     // res.render('admin/user', { users })
 
+    // 添加自定义属性，用来显示当前是在用户页面
+    req.app.locals.currentPage = 'user'
+
     // 要展示哪一页的数据（默认显示第一页）
     let pageNumber = req.query.page || 1
     // 获取一共有多少条数据

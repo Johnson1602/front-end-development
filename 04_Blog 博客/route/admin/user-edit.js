@@ -2,6 +2,9 @@ const { User } = require('../../model/user')
 
 module.exports = async (req, res) => {
     // console.log(req.query)
+
+    req.app.locals.currentPage = 'user'
+
     // msg 为编辑用户信息时，提交的用户信息验证不通过时的错误信息
     let { id, msg } = req.query
 

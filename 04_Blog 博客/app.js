@@ -6,6 +6,8 @@ const path = require('path')
 const bodyParser = require('body-parser')
 // 处理 cookie 和 session
 const session = require('express-session')
+const template = require('art-template')
+const dateFormat = require('dateformat')
 
 // create server
 const app = express()
@@ -17,13 +19,14 @@ require('./model/connect')
 app.engine('art', require('express-art-template'))  // 使用的模版引擎
 app.set('views', path.join(__dirname, 'views'))     // 模版文件的路径
 app.set('view engine', 'art')                       // 模版文件默认后缀名
+template.defaults.imports.dateFormat = dateFormat
 
-app.use((req, res, next) => {
-    if (req.url == '/admin/login' || req.url == '/admin/user' || req.url == '/admin/logout' || req.url == '/admin/user-edit' || req.url == '/admin/user-add') {
-        console.log(`    ${req.method} ${req.url}`)
-    }
-    next()
-})
+// app.use((req, res, next) => {
+//     if (req.url == '/admin/login' || req.url == '/admin/user' || req.url == '/admin/logout' || req.url == '/admin/user-edit' || req.url == '/admin/user-add') {
+//         console.log(`    ${req.method} ${req.url}`)
+//     }
+//     next()
+// })
 
 // 使用 express-session 处理 cookie & session
 app.use(session({secret: 'a strong key'}))
@@ -51,19 +54,19 @@ app.use((req, res) => {
 })
 
 // 错误处理
-app.use((err, req, res, next) => {
-    // 由于传递过来的错误的参数个数可能不一样，所以要动态生成 path 后面的参数
-    // let { path, msg } = JSON.parse(err)
-    // 先将自负串转换为对象
-    let errObj = JSON.parse(err)
-    let params = []
-    for (let attr in errObj) {
-        if (attr != 'path') {
-            params.push(`${attr}=${errObj[attr]}`)
-        }
-    }
-    res.redirect(`${errObj.path}?${params.join('&')}`)
-})
+// app.use((err, req, res, next) => {
+//     // 由于传递过来的错误的参数个数可能不一样，所以要动态生成 path 后面的参数
+//     // let { path, msg } = JSON.parse(err)
+//     // 先将自负串转换为对象
+//     let errObj = JSON.parse(err)
+//     let params = []
+//     for (let attr in errObj) {
+//         if (attr != 'path') {
+//             params.push(`${attr}=${errObj[attr]}`)
+//         }
+//     }
+//     res.redirect(`${errObj.path}?${params.join('&')}`)
+// })
 
 // listen on port 3000
 app.listen(3000)

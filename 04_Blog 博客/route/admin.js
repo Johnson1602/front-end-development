@@ -10,7 +10,7 @@ admin.get('/login', require('./admin/login-page'))
 admin.post('/login', require('./admin/login'))
 
 // 进入用户页面
-admin.get('/user', require('./admin/user-page'))
+admin.get('/user', require('./admin/user'))
 
 // 用户退出
 admin.get('/logout', require('./admin/logout'))
@@ -26,5 +26,14 @@ admin.post('/user-edit', require('./admin/user-edit-fn'))
 
 // 删除用户
 admin.get('/delete', require('./admin/user-delete'))
+
+// 文章管理页面
+admin.get('/article', require('./admin/article'))
+
+// 文章编辑页面
+admin.get('/article-edit', require('./admin/article-edit'))
+
+// 发布新文章
+admin.post('/article-add-fn', require('./admin/article-add-fn'))
 
 module.exports = admin
