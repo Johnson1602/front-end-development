@@ -8,4 +8,7 @@ home.get('/', require('./home/index'))
 // 文章详情页
 home.get('/article', require('./home/article'))
 
+// 发表评论
+home.post('/comment', require('./home/comment'))
+
 module.exports = home

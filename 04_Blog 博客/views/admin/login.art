@@ -14,6 +14,8 @@
             <h4 class="title">黑马程序员 - 博客管理员登录</h4>
             <div class="login">
                 <form action="/admin/login" method="POST" id="login-form">
+                    <!-- 文章 id -->
+                    <input type="hidden" name="articleId" value="{{articleId}}">
                     <div class="form-group">
                         <label>邮件</label>
                         <input type="email" class="form-control" placeholder="请输入邮件地址" name="email">

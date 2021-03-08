@@ -1,3 +1,7 @@
 module.exports = (req, res) => {
-    res.render('admin/login')
+
+    let articleId = req.query.id
+    // console.log(articleId)
+
+    res.render('admin/login', { articleId })
 }

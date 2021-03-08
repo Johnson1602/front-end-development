@@ -19,7 +19,13 @@ require('./model/connect')
 // 使用 body-parser 处理 post 请求参数
 app.use(bodyParser.urlencoded({extended: false}))
 // 使用 express-session 处理 cookie & session
-app.use(session({secret: 'a strong key'}))
+app.use(session({
+    secret: 'a strong key',
+    saveUninitialized: false,
+	cookie: {
+		maxAge: 24 * 60 * 60 * 1000
+	}
+}))
 
 // 配置模版引擎
 app.engine('art', require('express-art-template'))  // 使用的模版引擎

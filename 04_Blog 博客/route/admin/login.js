@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt')
 
 module.exports = async (req, res) => {
     // 解构出邮箱和密码
-    let {email, password} = req.body
+    let { articleId, email, password } = req.body
+    // console.log(articleId)
 
     // 如果邮箱或密码为空或长度过长，则返回错误
     if (email.trim().length == 0 || email.trim().length > 30 || password.trim().length == 0 || password.trim().length > 20) {
@@ -27,13 +28,23 @@ module.exports = async (req, res) => {
         if (isValid) {
             // 密码正确，将用户信息存储在 session 对象中
             req.session.username = user.username
+            req.session.role = user.role
             
             // 将用户信息存储到 app.locals 中，方便所有模版文件访问
             req.app.locals.userInfo = user
 
-            // 重定向到用户页面
-            res.redirect('/admin/user')
-            // res.send('Welcome back!')
+            // 如果有文章 id，就跳转到文章详情页
+            if (articleId) {
+                return res.redirect(`/home/article?id=${articleId}`)
+            }
+            // 重定向到各自页面
+            if (user.role == 'admin') {
+                // 如果是管理员，那么就跳转到用户界面
+                res.redirect('/admin/user')
+            } else if (user.role == 'normal') {
+                // 如果是普通用户，就跳转到文章展示页面
+                res.redirect('/home/')
+            }
         } else {
             // 密码错误
             res.status(400).render('admin/error', {
