@@ -2,8 +2,10 @@ const express = require('express')
 
 const home = express.Router()
 
-home.get('/', (req, res) => {
-    res.send('Welcome to homepage!')
-})
+// 博客展示首页
+home.get('/', require('./home/index'))
+
+// 文章详情页
+home.get('/article', require('./home/article'))
 
 module.exports = home
