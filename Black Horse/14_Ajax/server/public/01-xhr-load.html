@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 测试 xhr 对象注册事件的两种方法
+         */
+        var xhr = new XMLHttpRequest(),
+            method = 'GET',
+            url = 'http://localhost:3000/load';
+        
+        xhr.open(method, url);
+        // xhr.onload = function() {
+        //     console.log(xhr.responseText);
+        // }
+
+        xhr.addEventListener('load', () => {
+            console.log(xhr.responseText);
+        })
+
+        xhr.send();
+    </script>
+</body>
+</html>

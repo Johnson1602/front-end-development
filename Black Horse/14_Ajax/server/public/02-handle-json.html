@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 新建 ajax 对象
+        const xhr = new XMLHttpRequest();
+        // 添加请求参数
+        xhr.open('get', 'http://localhost:3000/request-data');
+        // 发送请求
+        xhr.send();
+        // 接收相应结果
+        xhr.onload = function () {
+            console.log(xhr.responseText);
+            // 接收到的是被转换为字符串的 json 对象，要进行解析才能方便使用
+            const data = JSON.parse(xhr.responseText);
+            document.body.innerHTML = '<h2>Hello, ' + data.name + '</h2>';
+        }
+    </script>
+</body>
+</html>

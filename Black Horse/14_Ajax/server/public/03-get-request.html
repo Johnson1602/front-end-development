@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <input type="text" name="username" id="username">
+    </p>
+    <p>
+        <input type="text" name="age" id="age">
+    </p>
+    <p>
+        <input type="button" value="Submit" id="submit">
+    </p>
+
+    <script>
+        // 获取表单元素
+        var username = document.querySelector('#username');
+        var age = document.querySelector('#age');
+        var submit = document.querySelector('#submit');
+
+        // 当点击提交时，创建 ajax 请求
+        submit.addEventListener('click', function () {
+            // 手动拼接请求参数
+            var params = `?username=${username.value}&age=${age.value}`;
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', 'http://localhost:3000/get-request' + params);
+            xhr.send();
+            xhr.onload = function () {
+                console.log(xhr.responseText);
+            }
+        })
+    </script>
+</body>
+</html>
