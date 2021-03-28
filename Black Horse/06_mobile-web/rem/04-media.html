@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Test</title>
+    <style>
+        @media screen and (max-width: 579px) {
+            body {
+                background-color: #fff;
+            }
+        }
+
+        @media screen and (min-width: 580px) {
+            body {
+                background-color: pink;
+            }
+        }
+
+        /* 这里因为顺序在下面，所以会把上面的样式层叠掉 */
+        @media screen and (min-width: 970px) {
+            body {
+                background-color: skyblue;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
