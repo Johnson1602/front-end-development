@@ -27,7 +27,7 @@ function print(fn) {
     const a = 200
     fn()
 }
-const a = 100
+const a = 100 // 如果这里没有定义 a，那么将会报错 “a is not defined”
 function fn() {
     console.log(a)
 }

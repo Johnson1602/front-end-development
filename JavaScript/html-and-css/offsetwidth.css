@@ -1,0 +1,8 @@
+#offset {
+    margin: 20px;
+    width: 100px;
+    height: 100px;
+    background-color: skyblue;
+    padding: 20px;
+    border: 10px solid pink;
+}

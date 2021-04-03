@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offsetwidth</title>
+    <link rel="stylesheet" href="./offsetwidth.css">
+    <link rel="stylesheet" href="./float.css">
+    <link rel="stylesheet" href="./line-height.css">
+</head>
+<body>
+    <!-- offsetwidth -->
+    <div id="offset">test</div>
+
+    <!-- 浮动 -->
+    <div class="right">123</div>
+    <div class="right">456</div>
+
+    <!-- line height -->
+    <div id="line">
+        <p>Test line height</p>
+    </div>
+
+    <script>
+        const div = document.querySelector('div');
+        // offsetWidth = (width + padding + border)，无 margin
+        console.log(div.offsetWidth);   // 160
+    </script>
+</body>
+</html>

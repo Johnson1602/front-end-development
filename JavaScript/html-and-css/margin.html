@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>垂直外边距合并</title>
+    <style>
+        .container {
+            overflow: hidden;
+            width: 800px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+
+        /* 测试水平方向的 margin */
+        /* 水平方向的 margin 不会合并 */
+        /* 两个 div 中间隔了 100px */
+        .vertical div {
+            float: left;
+            margin: 30px 50px 0px;
+            width: 200px;
+            height: 150px;
+            background-color: pink;
+        }
+
+        /* 垂直方向的 margin 会合并 */
+        /* 两个 div 中间隔了 50px */
+        .normal {
+            width: 200px;
+            height: 150px;
+            background-color: pink;
+        }
+
+        .horizontal div:first-child {
+            margin-bottom: 50px;
+        }
+
+        .horizontal div:last-child {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="vertical container">
+        <div>1</div>
+        <div>2</div>
+    </div>
+
+    <div class="horizontal container">
+        <div class="normal">1</div>
+        <div class="normal">2</div>
+    </div>
+</body>
+</html>
