@@ -4,24 +4,23 @@ Array.prototype.mergeSort = function() {
         if (arr.length === 1) {
             return arr;
         }
-        const partitionIndex = Math.floor(arr.length / 2);
-        const leftArr = arr.slice(0, partitionIndex);
-        const rightArr = arr.slice(partitionIndex, arr.length);
-        const sortedLeftArr = rec(leftArr);
-        const sortedRightArr = rec(rightArr);
-        
-        // merge
-        const mergeArr = [];
-        while (sortedLeftArr.length || sortedRightArr.length) {
-            if (sortedLeftArr.length && sortedRightArr.length) {
-                mergeArr.push(sortedLeftArr[0] < sortedRightArr[0] ? sortedLeftArr.shift() : sortedRightArr.shift());
-            } else if (!sortedLeftArr.length && sortedRightArr.length) {
-                mergeArr.push(sortedRightArr.shift());
-            } else if (sortedLeftArr.length && !sortedRightArr.length) {
-                mergeArr.push(sortedLeftArr.shift());
-            }
+        const mid = Math.floor(arr.length / 2);
+        const left = arr.slice(0, mid);
+        const right = arr.slice(mid, arr.length);
+        const leftSorted = rec(left);
+        const rightSorted = rec(right);
+
+        const merge = [];
+        while (leftSorted.length && rightSorted.length) {
+            merge.push(leftSorted[0] < rightSorted[0] ? leftSorted.shift() : rightSorted.shift());
         }
-        return mergeArr;
+        while (leftSorted.length) {
+            merge.push(leftSorted.shift());
+        }
+        while (rightSorted.length) {
+            merge.push(rightSorted.shift());
+        }
+        return merge;
     }
     const result = rec(this);
     result.forEach((value, index) => {

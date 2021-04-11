@@ -23,14 +23,23 @@
 // fn() // 100
 
 // 函数作为参数被传递
-function print(fn) {
-    const a = 200
-    fn()
-}
-const a = 100 // 如果这里没有定义 a，那么将会报错 “a is not defined”
-function fn() {
-    console.log(a)
-}
-print(fn) // 100
+// function print(fn) {
+//     const a = 200
+//     fn()
+// }
+// const a = 100 // 如果这里没有定义 a，那么将会报错 “a is not defined”
+// function fn() {
+//     console.log(a)
+// }
+// print(fn) // 100
 
-
+function makeFunc() {
+    var name = 'Mozilla';
+    function displayName() {
+        console.log(name);
+    }
+    return displayName;
+}
+  
+var myFunc = makeFunc();
+myFunc();
