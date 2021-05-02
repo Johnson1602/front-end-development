@@ -14,4 +14,6 @@ for (let i = 0; i < 10; i++) {
     }, 100);
 }
 
-console.log(i);
+// console.log(i);
+
+console.log(c);
